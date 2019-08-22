@@ -10,23 +10,23 @@
       <a class="nav-link" data-toggle="collapse" data-target="#submenu" href="#">User management</a>
       <ul id="submenu" class="navbar-nav collapse">
           <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path(:role=>'administrators')%>">Administrators
+             <a class="nav-link" href="<%= admin_users_path(:role=>'administrators')%>">  Administrators
                 <span class="badge badge-pill badge-warning"><%= @admin_count %></span>
              </a>
           </li>
          <li class="nav-item" >
-             <a class="nav-link" href="<%= admin_users_path(:role=>'doctor')%>">Doctors
+             <a class="nav-link" href="<%= admin_users_path(:role=>'doctor')%>">  Doctors
                 <span class="badge badge-pill badge-info"><%= @doctor_count %></span>
              </a>
          
          </li>
          <li class="nav-item ">
-            <a class="nav-link" href="<%= admin_users_path(:role=>'nurse')%>">Nurses
+            <a class="nav-link" href="<%= admin_users_path(:role=>'nurse')%>">  Nurses
               <span class="badge badge-pill badge-success"><%= @nurse_count %></span>
             </a>
          </li>
          <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path(:role=>'patient')%>">Patients
+             <a class="nav-link" href="<%= admin_users_path(:role=>'patient')%>">  Patients
                 <span class="badge badge-pill badge-primary"><%= @patient_count %></span>
              </a>
          </li>
