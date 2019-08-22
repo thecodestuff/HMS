@@ -4,7 +4,8 @@ class Admin::UsersController < Admin::AdminController
     role = params[:role]
     if user_signed_in?
       if role == 'administrators'
-        @users = User.where(admin:true)
+        #@users = User.where(admin:true)
+        render html: "hello administrators...."
       elsif role == 'doctors'
         @users = User.where(admin:false)
         render html: "its doctors"
