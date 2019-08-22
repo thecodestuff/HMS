@@ -11,7 +11,8 @@ class Admin::AdminController < ApplicationController
   def get_users_count
     @users_count  = User.all 
     @admin_count  = @users_count.where(admin:true).count
-    @doctor_count = @users_count.where(admin:false).count
-    #@nurse_count  =
+    @doctor_count = @users_count.where(role:'doctor').count
+    @nurse_count = @users_count.where(role:'doctor').count
+    @patient_count = @users_count.where(role:'patient').count
   end
 end
