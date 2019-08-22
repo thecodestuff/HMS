@@ -4,11 +4,17 @@ class Admin::UsersController < Admin::AdminController
     role = params[:role]
     if user_signed_in?
       if role == 'administrators'
-        #@users = User.where(admin:true)
-        render html: "hello administrators...."
-      elsif role == 'doctors'
-        @users = User.where(admin:false)
-        render html: "its doctors"
+        @users = User.where(admin:true)
+        render 'admin_user'
+      elsif role == 'doctor'
+        @users = User.where(role:'doctor')
+        render 'doctor_user'
+      elsif role =='nurse'
+        @users = User.where(role:'nurse')
+        render 'nurse_user'
+      elsif role =='patient'
+        @users = User.where(role:'patient')
+        render 'patient_user'
       else
         render html: "no genral user found ...under construction..."
       end

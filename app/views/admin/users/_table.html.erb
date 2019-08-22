@@ -1,0 +1,38 @@
+<div class ="row">
+   <div class="col-lg-12">
+   <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Civil Id</th>
+        <th>Department</th>
+        <th>Previlige Level</th>
+        <th>Is Admin</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user|%>
+        <tr>
+           <td><%= user.id%></td>
+           <td><%= user.email%></td>
+           <td><%= user.firstname%></td>
+           <td><%= user.civil_id%></td>
+           <td><%= user.department%></td>
+           <td><%= user.previlige_level%></td>
+           <td><%= user.admin%></td>
+           <td><%= user.phone%></td>
+           <td><%= user.city%></td>
+           <td><%= user.country%></td>
+           
+        </tr>
+      <% end %>
+    </tbody>
+  </table>   
+
+   </div>
+</div>
