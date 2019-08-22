@@ -1,13 +1,27 @@
 <div class="container-fluid">
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar  bg-dark navbar-dark col-lg-2">
   <ul class="navbar-nav">
     <li class="nav-item active">
       <%= link_to 'Home' , admin_path , class: "nav-link"%>
     </li>
     <% if current_user.admin? %>
     <li class="nav-item">
-      <a class="nav-link" href="#">User management</a>
+      <a class="nav-link" data-toggle="collapse" data-target="#submenu" href="#">User management</a>
+      <ul id="submenu" class="navbar-nav collapse">
+          <li class="nav-item ">
+             <%= link_to 'Administrators' ,  class: "nav-link"%>
+          </li>
+         <li class="nav-item" >
+         <%= link_to 'Doctors' ,  class: "nav-link"%>
+         </li>
+         <li class="nav-item ">
+         <%= link_to 'Nurses' ,  class: "nav-link"%>
+         </li>
+         <li class="nav-item ">
+         <%= link_to 'Patients' ,  class: "nav-link"%>
+         </li>
+      </ul>
     </li>
 
     <li class="nav-item">
@@ -19,6 +33,20 @@
     </li>
 
     <% end %>
+
+    <% if !current_user.admin? %>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Refferals 
+         <span class="badge badge-pill badge-warning">5</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="#">Appointments
+      <span class="badge badge-pill badge-warning">2</span>
+      </a>
+    </li>
+    <% end %>
     <li class="nav-item">
     <%= link_to 'Logout' , destroy_user_session_path ,method: :delete, class: "nav-link"%>
     </li>
@@ -27,3 +55,4 @@
 </nav>
 
 </div>
+
