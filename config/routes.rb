@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     get 'login', to: 'devise/sessions#new'
   end
   namespace :admin do
-    get '', to: 'admin#index'
+    #get '', to: 'admin#index'
+    root to: 'admin#index'
     resources :users
     #get '/users/:role' , to: 'users#index'
   end
