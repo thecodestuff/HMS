@@ -4,12 +4,20 @@ class Admin::UsersController < Admin::AdminController
     @users = User.all 
   end
 
+  def new 
+    @user = User.new
+  end
+
+  def create
+    render html: "creating user "
+  end
+
   def show
     render html: "hello"
   end
 
-  def edit 
-    render html: "editig..."
+  def edit
+     @user = User.find(params[:id])
   end
 
   def destroy 
