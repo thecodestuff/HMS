@@ -9,7 +9,16 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def create
-    render html: "creating user "
+    @user = User.new(user_params)
+    
+    respond_to do |format|
+      if @user.save
+        format.html{ redirect_to admin_users_path, notice: 'user created successfully' }
+      else
+        
+        format.html{redirect_to admin_users_path, notice: "#{@user.errors.details}"}
+      end
+    end
   end
 
   def show
@@ -27,5 +36,29 @@ class Admin::UsersController < Admin::AdminController
       flash[:notice] = "user deleted successfully..."
       redirect_to admin_users_path 
     end
+  end
+
+  private 
+  def user_params
+    params.require(:user).permit(
+      :firstname,
+      :lastname , 
+      :civil_id , 
+      :email,
+      :password,
+      :previlige_level ,
+      :admin , 
+      :department , 
+      :phone , 
+      :blood_group , 
+      :age ,
+      :house_no , 
+      :street , 
+      :locality , 
+      :city , 
+      :state ,
+      :country , 
+      :pincode
+    )
   end
 end
