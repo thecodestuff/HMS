@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  before_action :authenticate_user!, :get_users_count
+  before_action :authenticate_user!#, :get_users_count
   def index
     
   end
