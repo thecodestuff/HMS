@@ -9,6 +9,13 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" data-target="#submenu" href="#">User management</a>
       <ul id="submenu" class="navbar-nav collapse">
+
+          <li class="nav-item ">
+             <a class="nav-link" href="<%= admin_users_path %>">  Users
+                <span class="badge badge-pill badge-warning"><%= User.is_admin %></span>
+             </a>
+          </li>
+
           <li class="nav-item ">
              <a class="nav-link" href="<%= admin_users_path(:role=>'administrators')%>">  Administrators
                 <span class="badge badge-pill badge-warning"><%= User.is_admin %></span>

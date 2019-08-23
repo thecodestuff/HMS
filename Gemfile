@@ -72,3 +72,6 @@ gem 'devise'
 
 # hirb preety print
 gem 'hirb'
+
+# font awesome 
+gem "font-awesome-rails"
