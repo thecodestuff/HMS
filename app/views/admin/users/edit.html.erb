@@ -1,5 +1,9 @@
 <div class="form-wrapper" style="width:400px;margin:0px auto">
   <h2>Edit new user </h2>
-  <%= render 'form' %>
+
+  <%= form_for @user , url:{action:'update'} do |f|%>
+    <%= render 'form',:f=>f %>
+  <% end %>
+
 </div>
 

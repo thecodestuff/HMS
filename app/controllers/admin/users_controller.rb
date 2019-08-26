@@ -29,6 +29,17 @@ class Admin::UsersController < Admin::AdminController
      @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "user updated successfully..."
+      redirect_to admin_users_path 
+    else
+      flash[:alert]="#{@user.errors.details}"
+      redirect_to admin_users_path
+    end
+  end
+
   def destroy 
     #User.delete(params[:id]) if User.exists?(params[:id])
     if User.exists?(params[:id])

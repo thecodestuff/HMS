@@ -1,5 +1,9 @@
 <div class="form-wrapper" style="width:400px;margin:0px auto">
   <h2>Register new user </h2>
-  <%= render 'form' %>
+
+  <%= form_for @user , url:{action:'create'} do |f|%>
+    <%= render 'form', :f=>tag_builder %>
+  <% end %>
+
 </div>
 

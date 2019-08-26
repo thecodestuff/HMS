@@ -1,5 +1,4 @@
-<%= params[:id]%>
-<%= form_for @user , url:{action:'create'} do |f|%>
+
   <div class="form-group">
       <%= f.label :firstname %>
       <%= f.text_field :firstname, class:"form-control" %>    
@@ -69,5 +68,5 @@
       
       <%= f.submit "register", class:"form-control btn btn-primary" %>    
   </div>
-<%end%>
+
 
