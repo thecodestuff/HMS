@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  ,: MyString
+  patient_type: MyString
+  ,: MyString
+  ward_assigned: 
+
+two:
+  patient_id: 1
+  ,: MyString
+  patient_type: MyString
+  ,: MyString
+  ward_assigned: 
