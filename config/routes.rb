@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     #get '', to: 'admin#index'
     root to: 'admin#index'
     resources :users
+    resources :patients, only:[:new,:create]
     #get '/users/:role' , to: 'users#index'
   end
 end

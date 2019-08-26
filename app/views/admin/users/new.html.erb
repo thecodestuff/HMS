@@ -2,7 +2,7 @@
   <h2>Register new user </h2>
 
   <%= form_for @user , url:{action:'create'} do |f|%>
-    <%= render 'form', :f=>tag_builder %>
+    <%= render 'form', :f=>f %>
   <% end %>
 
 </div>
