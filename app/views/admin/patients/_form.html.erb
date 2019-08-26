@@ -1,12 +1,18 @@
 
   <div class="form-group">
   <%= f.label :user_id %>
-  <%= f.text_field :user_id, class:"form-control" %>    
+  <%= f.collection_select(:user_id, User.all, :id, :firstname) %>
 </div>
 
 <div class="form-group">
   <%= f.label :patient_type %>
-  <%= f.text_field :patient_type, class:"form-control" %>    
+  <%= f.select(:patient_type) do %>    
+
+    <% [ ['Inpatient', 'INP'],['Outpatient','OUTP'],['Emergency','EMR'] ].each do |c| %>
+      <%= content_tag(:option , c.first , value: c.last) %>      
+    <% end %>
+
+  <% end %>
 </div>
 
 <div class="form-group">
