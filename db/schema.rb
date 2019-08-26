@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_115231) do
+ActiveRecord::Schema.define(version: 2019_08_26_124419) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "physician_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_115231) do
     t.index ["physician_id"], name: "index_appointments_on_physician_id"
   end
 
-  create_table "patients", force: :cascade do |t|
+  create_table "patients", primary_key: "patient_id", force: :cascade do |t|
     t.integer "user_id"
     t.string "patient_type"
     t.integer "ward_assigned"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_115231) do
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
-  create_table "physicians", force: :cascade do |t|
+  create_table "physicians", primary_key: "physician_id", force: :cascade do |t|
     t.integer "user_id"
     t.string "speciality"
     t.string "shift"
