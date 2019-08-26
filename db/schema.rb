@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_124419) do
+ActiveRecord::Schema.define(version: 2019_08_26_125329) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "physician_id"
@@ -23,22 +23,18 @@ ActiveRecord::Schema.define(version: 2019_08_26_124419) do
   end
 
   create_table "patients", primary_key: "patient_id", force: :cascade do |t|
-    t.integer "user_id"
     t.string "patient_type"
     t.integer "ward_assigned"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
   create_table "physicians", primary_key: "physician_id", force: :cascade do |t|
-    t.integer "user_id"
     t.string "speciality"
     t.string "shift"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_physicians_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

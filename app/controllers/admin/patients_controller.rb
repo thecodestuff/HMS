@@ -10,7 +10,7 @@ class Admin::PatientsController < ApplicationController
       if @patient.save
         format.html{redirect_to new_admin_patient_path, notice:'patient admited...'}
       else 
-        format.html{redirect_to new_admin_patient_path, notice:"#{@patient.errors.details}"}
+        format.html{redirect_to new_admin_patient_path, notice:"#{@patient.errors.messages}"}
       end
     end
   end
@@ -18,8 +18,7 @@ class Admin::PatientsController < ApplicationController
   private 
   def patient_params
     params.require(:patient).permit(
-      :id,
-      :user_id, 
+      :patient_id, 
       :patient_type,
       :ward_assigned,
       :status 
