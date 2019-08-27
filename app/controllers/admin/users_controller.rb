@@ -15,7 +15,6 @@ class Admin::UsersController < Admin::AdminController
       if @user.save
         format.html{ redirect_to admin_users_path, notice: 'user created successfully' }
       else
-        
         format.html{redirect_to admin_users_path, notice: "#{@user.errors.details}"}
       end
     end
@@ -49,7 +48,8 @@ class Admin::UsersController < Admin::AdminController
     end
   end
 
-  private 
+  private
+
   def user_params
     params.require(:user).permit(
       :firstname,

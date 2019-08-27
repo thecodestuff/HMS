@@ -64,19 +64,18 @@
 
     <% end %>
 
-    <% if !current_user.admin? %>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Refferals 
-         <span class="badge badge-pill badge-warning">5</span>
-      </a>
-    </li>
-
-    <li class="nav-item">
+   <% if !current_user.admin? %>
+      <li class="nav-item">
+				<a class="nav-link" href="#">Refferals 
+					<span class="badge badge-pill badge-warning">5</span>
+				</a>
+      </li>
+      <li class="nav-item">
       <a class="nav-link" href="#">Appointments
       <span class="badge badge-pill badge-warning">2</span>
       </a>
-    </li>
-    <% end %>
+      </li>
+   <% end %>
     <li class="nav-item">
     <%= link_to 'Logout' , destroy_user_session_path ,method: :delete, class: "nav-link"%>
     </li>

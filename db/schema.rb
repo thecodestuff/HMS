@@ -10,31 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_125329) do
+ActiveRecord::Schema.define(version: 2019_08_26_112323) do
 
-  create_table "appointments", force: :cascade do |t|
-    t.integer "physician_id"
-    t.integer "patient_id"
-    t.datetime "appointment_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["patient_id"], name: "index_appointments_on_patient_id"
-    t.index ["physician_id"], name: "index_appointments_on_physician_id"
-  end
-
-  create_table "patients", primary_key: "patient_id", force: :cascade do |t|
+  create_table "patients", force: :cascade do |t|
+    t.integer "user_id"
     t.string "patient_type"
     t.integer "ward_assigned"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
-  create_table "physicians", primary_key: "physician_id", force: :cascade do |t|
+  create_table "physicians", force: :cascade do |t|
+    t.integer "user_id"
     t.string "speciality"
     t.string "shift"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_physicians_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
