@@ -8,7 +8,7 @@
   <%= f.label :patient_type %>
   <%= f.select(:patient_type) do %>    
 
-    <% [ ['Inpatient', 'INP'],['Outpatient','OUTP'],['Emergency','EMR'] ].each do |c| %>
+    <% Patient.patient_types.each do |c| %>
       <%= content_tag(:option , c.first , value: c.last) %>      
     <% end %>
 

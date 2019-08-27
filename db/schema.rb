@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_112323) do
+ActiveRecord::Schema.define(version: 2019_08_27_080646) do
 
   create_table "patients", force: :cascade do |t|
     t.integer "user_id"
-    t.string "patient_type"
+    t.integer "patient_type", default: 0
     t.integer "ward_assigned"
     t.boolean "status"
     t.datetime "created_at", null: false
