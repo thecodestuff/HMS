@@ -9,7 +9,7 @@
   <%= f.select(:patient_type) do %>    
 
     <% Patient.patient_types.each do |c| %>
-      <%= content_tag(:option , c.first , value: c.last) %>      
+      <%= content_tag(:option , c.first , value: c.last.to_i) %>      
     <% end %>
 
   <% end %>
@@ -26,7 +26,6 @@
 </div>
 
 <div class="form-group">
-  
   <%= f.submit "Admit Patient", class:"form-control btn btn-primary" %>    
 </div>
 
