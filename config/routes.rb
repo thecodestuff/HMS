@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'admin#index'
     resources :users
-    resources :patients, only:[:new,:create]
+    resources :patients, only: %i[new create]
+    resources :appointments, only: %i[index new create destroy]
   end
 end

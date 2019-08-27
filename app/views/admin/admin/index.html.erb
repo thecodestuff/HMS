@@ -44,18 +44,12 @@
              </a>
          </li>
 
-         <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path(:role=>'patient')%>">  Patients
-                <span class="badge badge-pill badge-primary"><%= User.is_patient %></span>
-             </a>
-         </li>
-
       </ul>
 
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="#">Schedule apointment</a>
+      <a class="nav-link" href="<%= admin_appointments_path %>">Manage apointment</a>
     </li>
 
     <li class="nav-item">

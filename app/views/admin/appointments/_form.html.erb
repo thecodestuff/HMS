@@ -1,0 +1,16 @@
+
+<div class="form-group">
+  <%= f.label :physician_id %>
+  <%= f.collection_select(:physician_id, Physician.all, :id, :shift ) %>
+</div>
+
+<div class="form-group">
+  <%= f.label :patient_id %>
+  <%= f.collection_select(:patient_id, Patient.all, :id, :status) %>
+</div>
+
+<div class="form-group">
+  <%= f.submit "Shedule Appointment", class:"form-control btn btn-primary" %>    
+</div>
+
+
