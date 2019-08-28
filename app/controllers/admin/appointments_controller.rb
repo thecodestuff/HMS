@@ -27,6 +27,10 @@ class Admin::AppointmentsController < ApplicationController
     end
   end
 
+  def update
+    render html: "updating appoinments .."
+  end
+
   private 
 
   def appointment_params

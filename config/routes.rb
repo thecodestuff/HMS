@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     root to: 'admin#index'
     resources :users
     resources :patients, only: %i[new create]
-    resources :appointments, only: %i[index new create destroy]
+    resources :appointments, only: %i[index new create destroy update]
   end
 end
