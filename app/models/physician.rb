@@ -1,4 +1,4 @@
-# Physician Model class 
+# Physician Model class
 
 class Physician < ApplicationRecord
   belongs_to :user
