@@ -5,7 +5,7 @@ module Admin::AppointmentsHelper
 
     @appointments.each do |appointment|
       record_array << [
-        appointment.id, 
+        appointment.id,
         get_patient_name(appointment.patient),
         get_physician_name(appointment.physician),
         appointment.appointment_date
