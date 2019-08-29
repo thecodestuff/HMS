@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  
+
   def index
     @users = User.all
   end
@@ -48,14 +48,8 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :firstname,
-      :lastname , 
-      :civil_id , 
-      :email,
-      :password,
-      :previlige_level ,
-      :admin , 
-      :department , 
+      :firstname, :lastname, :civil_id, :email, :password, :previlige_level,
+      :admin, :department , 
       :phone , 
       :blood_group , 
       :age ,

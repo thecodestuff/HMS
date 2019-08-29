@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  devise_for :users, :controllers => {  :registrations => 'admin/registrations' }
+  devise_for :users, :controllers => { :registrations => 'admin/registrations' }
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
+    get 'logout', to: 'devise/sessions#destroy'
   end
 
   namespace :admin do

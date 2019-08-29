@@ -10,16 +10,19 @@ class Admin::AppointmentsController < ApplicationController
     if @appointment.save
       flash[:notice] = 'appointment scheduled successfuly..'
       redirect_to admin_appointments_path
-    else 
+    else
       flash[:notice] = @appointment.errors.details.to_s
       redirect_to new_admin_appointment_path
     end
   end
 
   def destroy
-    if Appointment.delete(params[:id])
-      flash[:notice] = 'deleted successfully..'
-      redirect_to admin_appointments_path
+    respond_to do |format|
+      if Appointment.delete(params[:id])
+         format.js
+        #flash[:notice] = 'deleted successfully..'
+        #redirect_to admin_appointments_path
+      end
     end
   end
 

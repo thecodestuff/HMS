@@ -1,0 +1,14 @@
+function deleteAppointment(){
+  $('.delete_pony').bind('ajax:success', function() {
+   $(this).parents("tr").fadeOut(400);  
+  });
+}
+
+/*function pop(){
+  $('.delete_pony').bind('ajax:send',function(){
+    alert("ajax request called...")
+  });
+}*/
+
+
+deleteAppointment();
