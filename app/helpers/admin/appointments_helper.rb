@@ -1,7 +1,11 @@
 module Admin::AppointmentsHelper
   def fetch_records
     record_array = []
-    @appointments = Appointment.all
+    if current_user.admin?
+      @appointments = Appointment.all
+    else
+      @appointments = Appointment.where(physician_id: current_user.physician.id)
+    end
 
     @appointments.each do |appointment|
       record_array << [
