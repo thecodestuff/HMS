@@ -4,7 +4,7 @@ module Admin::AppointmentsHelper
     if current_user.admin?
       @appointments = Appointment.all
     else
-      @appointments = Appointment.where(physician_id: current_user.physician.id)
+      @appointments = Appointment.where(physician_id: current_user.physician)
     end
 
     @appointments.each do |appointment|
@@ -35,7 +35,7 @@ module Admin::AppointmentsHelper
     User.is_physician.each do |user|
       user_array << [
         user.firstname,
-        Physician.where(user_id: user.id).map { |physician| physician }.first.id.to_i
+        Physician.where(user_id: user).map { |physician| physician }.first.id.to_i
       ]
     end
     user_array
@@ -46,7 +46,7 @@ module Admin::AppointmentsHelper
     User.is_patients.each do |user|
       user_array << [
         user.firstname,
-        Patient.where(user_id: user.id).map { |patient| patient }.first.id.to_i
+        Patient.where(user_id: user).map { |patient| patient }.first.id
       ]
     end
     user_array
