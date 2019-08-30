@@ -1,8 +1,12 @@
 function updateStatus(){
   $('.update_status').bind('ajax:success', function(){
-    console.log("disabling...")
     $(this).addClass("disabled").attr("css").css("cursor","not-allowed")
   });
 }
 
+function updateFlash(){
+$('.notice').html("appointment done");
+}
+
+updateFlash() ;
 updateStatus();

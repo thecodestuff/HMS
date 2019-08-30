@@ -13,12 +13,10 @@ class Admin::AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     respond_to do |format|
-      if @appointment.save 
+      if @appointment.save
         format.js do
           flash.now[:notice] = 'appointment scheduled successfuly..'
-          @appointments = fetch_records
         end
-        #redirect_to admin_appointments_path
       else
         flash[:notice] = @appointment.errors.details.to_s
         redirect_to new_admin_appointment_path
@@ -30,8 +28,6 @@ class Admin::AppointmentsController < ApplicationController
     respond_to do |format|
       if Appointment.delete(params[:id])
          format.js
-        #flash[:notice] = 'deleted successfully..'
-        #redirect_to admin_appointments_path
       end
     end
   end
@@ -42,9 +38,7 @@ class Admin::AppointmentsController < ApplicationController
       @appointment.update(status: 1)
       @appointment.save if @appointment.valid?
       format.js
-    end 
-    #flash[:notice] = 'appointment updated successfully'
-    #redirect_to admin_appointments_path
+    end
   end
 
   private
