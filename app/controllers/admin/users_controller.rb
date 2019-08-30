@@ -48,18 +48,10 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :firstname, :lastname, :civil_id, :email, :password, :previlige_level,
-      :admin, :department , 
-      :phone , 
-      :blood_group , 
-      :age ,
-      :house_no , 
-      :street , 
-      :locality , 
-      :city , 
-      :state ,
-      :country , 
-      :pincode
+      :firstname, :lastname, :civil_id, :email, :password,
+      :previlige_level, :admin, :department, :phone, :blood_group,
+      :age, :house_no, :street, :locality, :city,
+      :state, :country, :pincode
     )
   end
 end
