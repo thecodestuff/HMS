@@ -1,0 +1,1 @@
+document.getElementById('datePickerId').min = new Date().toISOString().split("T")[0];

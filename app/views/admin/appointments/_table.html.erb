@@ -1,6 +1,6 @@
 <div class ="row">
    <div class="col-lg-12">
-   <table class="table table-bordered table-striped table-hover">
+   <table class="table table-bordered table-striped table-hover" id="appointmentsTable">
     <thead>
       <tr>
         <th>Id</th>
@@ -15,20 +15,7 @@
     </thead>
     <tbody>
      <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment[0] %></td>
-        <td><%= appointment[1] %></td>
-        <td><%= appointment[2] %></td>
-        <td><%= appointment[3] %></td> 
-        <td>
-           <%= link_to 'cancel', admin_appointment_path(appointment[0]), method: :delete, remote: true, class: "btn btn-danger delete_pony" %>
-        </td> 
-        <% if !current_user.admin? %>
-           <td>
-              <%= link_to 'done', admin_appointment_path(appointment[0]) ,method: :patch, remote: true, class:"btn btn-warning"%>
-           </td>
-        <%end%>
-      </tr>
+       <%= render 'table_row', appointment:appointment %>
      <% end %>
     </tbody>
   </table>   

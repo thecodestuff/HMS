@@ -1,6 +1,8 @@
 module Admin::AppointmentsHelper
+=begin
   def fetch_records
     record_array = []
+
     if current_user.admin?
       @appointments = Appointment.all
     else
@@ -29,7 +31,7 @@ module Admin::AppointmentsHelper
     user = User.find(physician.user_id)
     user.firstname
   end
-
+=end
   def get_physician_names
     user_array = []
     User.is_physician.each do |user|

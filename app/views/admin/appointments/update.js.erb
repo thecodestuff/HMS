@@ -1,0 +1,8 @@
+function updateStatus(){
+  $('.update_status').bind('ajax:success', function(){
+    console.log("disabling...")
+    $(this).addClass("disabled").attr("css").css("cursor","not-allowed")
+  });
+}
+
+updateStatus();

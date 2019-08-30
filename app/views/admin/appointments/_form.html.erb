@@ -11,7 +11,7 @@
 
 <div class="form-group">
   <%= f.label :date %>
-  <input type="date" name="appointment[appointment_date]" id="datepicker" >
+  <input type="date"  name="appointment[appointment_date]" id="datePickerId" >
 </div>
 
 
@@ -19,4 +19,4 @@
   <%= f.submit "Shedule Appointment", class:"form-control btn btn-primary" %>    
 </div>
 
-
+<%= javascript_include_tag('appointment_new') %>
