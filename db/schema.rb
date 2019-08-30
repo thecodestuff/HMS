@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_122057) do
+ActiveRecord::Schema.define(version: 2019_08_30_122034) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.integer "physician_id"
@@ -69,6 +72,14 @@ ActiveRecord::Schema.define(version: 2019_08_28_122057) do
     t.string "role", default: "general", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "ward_occupancy_details", force: :cascade do |t|
+    t.string "ward_name"
+    t.integer "ward_type", default: 0
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
