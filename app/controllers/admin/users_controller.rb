@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :find_user, only: %i[update edit]
 
   def index
     @users = User.all
@@ -23,12 +24,9 @@ class Admin::UsersController < ApplicationController
     render html: 'hello'
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = 'user updated successfully...'
     else
@@ -38,7 +36,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    # User.delete(params[:id]) if User.exists?(params[:id])
     User.delete(params[:id])
     flash[:notice] = 'user deleted successfully...'
     redirect_to admin_users_path
@@ -53,5 +50,9 @@ class Admin::UsersController < ApplicationController
       :age, :house_no, :street, :locality, :city,
       :state, :country, :pincode
     )
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end
