@@ -11,25 +11,37 @@
       <ul id="submenu" class="navbar-nav collapse">
 
           <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path %>">  Users</a>
+             <a class="nav-link" href="<%= admin_users_path %>">  Users
+                <span class="badge badge-pill badge-warning"><%= User.is_admin %></span>
+             </a>
           </li>
 
           <li class="nav-item ">
-             <a class="nav-link" href="<%= new_admin_user_path %>">  Create User</a>
+             <a class="nav-link" href="<%= new_admin_user_path %>">  Create User
+                <span class="badge badge-pill badge-warning"><%= User.is_admin %></span>
+             </a>
           </li>
 
           <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path(:role=>'administrators')%>">  Administrators</a>
+             <a class="nav-link" href="<%= admin_users_path(:role=>'administrators')%>">  Administrators
+                <span class="badge badge-pill badge-warning"><%= User.is_admin %></span>
+             </a>
           </li>
          <li class="nav-item" >
-             <a class="nav-link" href="<%= admin_users_path(:role=>'doctor')%>">  Doctors</a>
+             <a class="nav-link" href="<%= admin_users_path(:role=>'doctor')%>">  Doctors
+                <span class="badge badge-pill badge-info"><%= User.is_doctor %></span>
+             </a>
          
          </li>
          <li class="nav-item ">
-            <a class="nav-link" href="<%= admin_users_path(:role=>'nurse')%>">  Nurses</a>
+            <a class="nav-link" href="<%= admin_users_path(:role=>'nurse')%>">  Nurses
+              <span class="badge badge-pill badge-success"><%= User.is_nurse %></span>
+            </a>
          </li>
          <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path(:role=>'patient')%>">  Patients</a>
+             <a class="nav-link" href="<%= admin_users_path(:role=>'patient')%>">  Patients
+                <span class="badge badge-pill badge-primary"><%= User.is_patient %></span>
+             </a>
          </li>
 
       </ul>

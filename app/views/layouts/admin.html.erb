@@ -13,23 +13,20 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'sb-admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= render 'shared/head' %>
 
 </head>
 
 <body id="page-top">
 
-  <%= render 'topnav'%>
+  <%= render 'shared/topnav'%>
 
   <div id="wrapper">
-
     <!-- Sidebar -->
-    <%= render 'nav' %>
+    <%= render 'shared/nav' %>
 
     <div id="content-wrapper">
-
       <div class="container-fluid">
-
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -40,32 +37,30 @@
 
         <!-- Icon Cards-->
         <% if current_user.admin? %>
-          <%= render 'card'%>
+          <%= render 'shared/card'%>
         <%else%>
-           <%= render 'doctor_card'%>
+           <%= render 'shared/doctor_card'%>
         <%end%>
 
         <!-- Area Chart Example-->
         <!----render char here-->
 
         <!-- DataTables Example -->
-
       </div>
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
-      <%= render 'footer' %>
+      <%= render 'shared/footer' %>
 
     </div>
     <!-- /.content-wrapper -->
-
   </div>
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
-  </a>
+</a>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -85,7 +80,5 @@
       </div>
     </div>
   </div>
-
 </body>
-
 </html>

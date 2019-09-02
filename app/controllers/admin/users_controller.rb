@@ -1,6 +1,5 @@
 class Admin::UsersController < ApplicationController
   before_action :find_user, only: %i[update edit]
-
   def index
     @users = User.all
   end
