@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :users
     resources :patients, only: %i[new create]
     resources :appointments, only: %i[index new create destroy update]
+    resources :wards, only: %i[index create]
   end
 end
