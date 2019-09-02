@@ -9,7 +9,7 @@ class Admin::WardsController < ApplicationController
     respond_to do |format|
       if @ward.save
         format.html { redirect_to admin_wards_path, notice: 'ward created success.' }
-        #format.js
+        format.js
       else 
         format.html { redirect_to admins_ward_path, notice: 'ward not created...'}
       end
@@ -27,7 +27,7 @@ class Admin::WardsController < ApplicationController
 
   private 
   def ward_params
-    params.permit(
+    params.require(:ward_occupancy_detail).permit(
       :id,
       :ward_name,
       :ward_type,
