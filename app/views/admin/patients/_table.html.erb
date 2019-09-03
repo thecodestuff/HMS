@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <tr>
+    <th>Id</th>
+    <th>Patient Name</th>
+    <th>Patient Type</th>
+    <th>Ward Assigned</th>
+    <th>Admited Date</th>
+    <th>Discharge Date</th>
+    <th>Action</th>
+  </tr>
+  <tbody>
+    <% @patients.each do |patient| %>
+      <%= render 'row', patient: patient %>
+    <%end%>
+  </tbody>
+</table>

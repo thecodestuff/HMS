@@ -1,0 +1,7 @@
+function deleteTableRow(){
+  $('#delete_row').bind('ajax:success', function() {
+   $(this).parents("tr").fadeOut(400);  
+  });
+}
+
+deleteTableRow();

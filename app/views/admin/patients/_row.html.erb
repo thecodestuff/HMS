@@ -1,0 +1,13 @@
+<tr>
+    <td><%= patient.id %></td>
+    <td><%= fetch_patient_name_from_user_id(patient.user_id) %></td>
+    <td><%= patient.patient_type %></td>
+    <td><%= patient.ward_assigned %></td>
+    <td><%= patient.admit_date %></td>
+    <td><%= patient.dischagre_on %></td>
+    <td>
+      <%= link_to 'Discharge', admin_patient_path(patient),method: 'delete',remote:true, class:'btn btn-danger', id:'delete_row' %>
+      <a href="#" class="btn btn-warning">admit</a>
+      <a href="#" class="btn btn-info">refer</a>
+    </td>
+  </tr>

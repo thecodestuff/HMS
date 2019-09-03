@@ -17,7 +17,7 @@
 
 <div class="form-group">
   <%= f.label :ward_assigned %>
-<%= f.collection_select(:user_id, WardOccupancyDetail.empty, :id, :ward_name) %></div>
+<%= f.collection_select(:ward_assigned, WardOccupancyDetail.empty, :ward_name, :ward_name) %></div>
 
 <div class="form-group">
   <%= f.label :status %>
