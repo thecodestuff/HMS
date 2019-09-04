@@ -11,9 +11,9 @@
 
   <title>Dashboard</title>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= render 'shared/head' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= render 'shared/head' %>
 
 </head>
 
@@ -43,9 +43,10 @@
         <%end%>
 
         <!-- Area Chart Example-->
-        <!----render char here-->
+        <%= render 'shared/chart'%>
 
         <!-- DataTables Example -->
+        <%= render 'shared/databaseTables'%>
       </div>
       <!-- /.container-fluid -->
 

@@ -7,16 +7,27 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'shared/head'%>
   </head>
 
   <body>
 
-    <div class="alert alert-success alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <p class="notice"><%= notice %></p>   
-    </div>
+    <%= render 'shared/topnav' if current_user.present? %>
 
-    <p class="alert"><%= alert %></p>    
-    <%= yield %>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <%= render 'shared/nav' if current_user.present? %>
+      <!----crumbord partial render here --->
+      <div id="content-wrapper">
+         <!---crumboard--->
+        <%= render 'shared/crumboard' if current_user.present? %>
+        <%= yield %>
+        <% if current_user.present? %>
+        <!-- Sticky Footer -->
+        <%= render 'shared/footer' %>
+        <%end%>
+        <!-- /.content-wrapper -->
+      </div>
+    <!-- /#wrapper -->
   </body>
 </html>

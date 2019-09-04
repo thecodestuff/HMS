@@ -1,5 +1,5 @@
 class Appointment < ApplicationRecord
-  enum patient_type: %i[pending done]
+  enum status: %i[pending done]
   belongs_to :physician
   belongs_to :patient
   scope :today_appointment, ->(id) { where(physician_id: id, appointment_date: Date.current) }
