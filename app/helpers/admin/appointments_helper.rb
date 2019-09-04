@@ -33,24 +33,24 @@ module Admin::AppointmentsHelper
   end
 =end
   def get_physician_names
-    user_array = []
-    User.is_physician.each do |user|
-      user_array << [
-        user.firstname,
-        Physician.where(user_id: user).map { |physician| physician }.first
+    physician_array = []
+    Physician.all.each do |physician|
+      physician_array << [
+        User.where(id: physician.user_id).first.firstname,
+        physician.id
       ]
     end
-    user_array
+    physician_array
   end
 
   def get_patient_names
-    user_array = []
-    User.is_patients.each do |user|
-      user_array << [
-        user.firstname,
-        Patient.where(user_id: user).map { |patient| patient }.first
+    patient_array = []
+    Patient.all.each do |patient|
+      patient_array << [
+        User.where(id: patient.user_id).first.firstname,
+        patient.id
       ]
     end
-    user_array
+    patient_array
   end
 end
