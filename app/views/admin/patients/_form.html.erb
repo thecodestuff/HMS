@@ -1,7 +1,7 @@
 
 <div class="form-group">
   <%= f.label :user_id %>
-  <%= f.collection_select(:user_id, User.all, :id, :firstname) %>
+  <%= f.collection_select(:user_id, User.is_patients, :id, :firstname) %>
 </div>
 
 <div class="form-group">

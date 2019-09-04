@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :firstname, :lastname, :department, :phone, :role, presence: true
   validates :civil_id, length: { is: 10 }
   validates :password, length: { in: 6..10 }
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
