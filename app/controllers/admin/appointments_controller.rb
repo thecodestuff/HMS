@@ -1,6 +1,6 @@
 class Admin::AppointmentsController < ApplicationController
   def index
-    @appointment = Appointment.new 
+    @appointment = Appointment.new
     respond_to do |format|
       format.html { @appointments = fetch_records }
     end
