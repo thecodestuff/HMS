@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
-         
+
   scope :is_admin,  -> { where(admin: true) }
   scope :is_nurse,  -> { where(role: 'nurse') }
   scope :is_physician, ->{ where(role: 'physician') }

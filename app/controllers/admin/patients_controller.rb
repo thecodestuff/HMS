@@ -1,5 +1,4 @@
 class Admin::PatientsController < ApplicationController
-  before_action :update_ward_status, only: %i[destroy]
   def new
     @patient = Patient.new
   end
@@ -7,12 +6,9 @@ class Admin::PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     respond_to do |format|
-      if @patient.save
-        format.html { redirect_to new_admin_patient_path, notice: 'patient admited...' }
-      else
-        format.html { redirect_to new_admin_patient_path, alert: 'unprocessable entity....' }
-      end
+      @patient.save ? redirect(format, 'patient admitted...') : redirect(format, 'unprocessable entity...')
     end
+    update_ward_status(@patient.id , 1)
   end
 
   def patients
@@ -20,6 +16,7 @@ class Admin::PatientsController < ApplicationController
   end
 
   def destroy
+    update_ward_status(params[:id],0)
     respond_to do |format|
       format.js if Patient.delete(params[:id])
     end
@@ -39,8 +36,12 @@ class Admin::PatientsController < ApplicationController
     )
   end
 
-  def update_ward_status
-    ward = WardOccupancyDetail.where(ward_name: Patient.find(params[:id]).ward_assigned )
-    ward.update(status: 0)
+  def update_ward_status(id, flag)
+    ward = WardOccupancyDetail.where(ward_name: Patient.find(id).ward_assigned )
+    ward.first.update(status: flag)
+  end
+
+  def redirect(format, message)
+    format.html { redirect_to new_admin_patient_path, notice: message }
   end
 end

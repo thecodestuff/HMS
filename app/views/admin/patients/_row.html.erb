@@ -8,6 +8,6 @@
     <td>
       <%= link_to 'Discharge', admin_patient_path(patient),method: 'delete',remote:true, class:'btn btn-danger', id:'delete_row' %>
       <a href="#" class="btn btn-warning">admit</a>
-      <a href="#" class="btn btn-info">refer</a>
+      <%= link_to 'Generate bill', admin_patient_path(patient), class:'btn btn-info' %>
     </td>
   </tr>

@@ -54,4 +54,8 @@ class Admin::UsersController < ApplicationController
   def find_user
     @user = User.find(params[:id])
   end
+
+  def redirect(format, message)
+    format.html { redirect_to admin_users_path, notice: message }
+  end
 end

@@ -25,13 +25,10 @@ class Admin::WardsController < ApplicationController
     end
   end
 
-  private 
+  private
+
   def ward_params
     params.require(:ward_occupancy_detail).permit(
-      :id,
-      :ward_name,
-      :ward_type,
-      :status
-    )
+      :id, :ward_name, :ward_type, :status)
   end
 end

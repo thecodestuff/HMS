@@ -26,9 +26,7 @@ class Admin::AppointmentsController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if Appointment.delete(params[:id])
-         format.js
-      end
+      format.js if Appointment.delete(params[:id])
     end
   end
 
