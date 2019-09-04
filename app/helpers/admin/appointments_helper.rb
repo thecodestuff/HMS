@@ -37,7 +37,7 @@ module Admin::AppointmentsHelper
     User.is_physician.each do |user|
       user_array << [
         user.firstname,
-        Physician.where(user_id: user).map { |physician| physician }.first.id.to_i
+        Physician.where(user_id: user).map { |physician| physician }.first
       ]
     end
     user_array
@@ -48,7 +48,7 @@ module Admin::AppointmentsHelper
     User.is_patients.each do |user|
       user_array << [
         user.firstname,
-        Patient.where(user_id: user).map { |patient| patient }.first.id
+        Patient.where(user_id: user).map { |patient| patient }.first
       ]
     end
     user_array

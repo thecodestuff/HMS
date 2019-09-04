@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :find_user, only: %i[update edit]
+  after_action :update_physician_table, only: %i[create], if: -> { @user.save }
   def index
     @users = User.all
   end
@@ -57,5 +58,9 @@ class Admin::UsersController < ApplicationController
 
   def redirect(url, message)
     redirect_to url, notice: message.to_s
+  end
+
+  def update_physician_table
+    @user.create_physician if @user.valid? && @user.role == 'physician'
   end
 end
