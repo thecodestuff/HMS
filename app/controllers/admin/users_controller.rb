@@ -12,9 +12,9 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_users_path, notice: 'user created successfully' }
+        format.html { redirect admin_users_path, 'user created successfully' }
       else
-        format.html { redirect_to admin_users_path, notice: @user.errors.details.to_s }
+        format.html { redirect new_admin_user_path, @user.errors.messages }
       end
     end
   end
@@ -47,7 +47,7 @@ class Admin::UsersController < ApplicationController
       :firstname, :lastname, :civil_id, :email, :password,
       :previlige_level, :admin, :department, :phone, :blood_group,
       :age, :house_no, :street, :locality, :city,
-      :state, :country, :pincode
+      :state, :country, :pincode, :role
     )
   end
 
@@ -55,7 +55,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def redirect(format, message)
-    format.html { redirect_to admin_users_path, notice: message }
+  def redirect(url, message)
+    redirect_to url, notice: message.to_s
   end
 end
