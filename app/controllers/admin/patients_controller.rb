@@ -8,7 +8,7 @@ class Admin::PatientsController < ApplicationController
     respond_to do |format|
       @patient.save ? redirect(format, 'patient admitted...') : redirect(format, 'unprocessable entity...')
     end
-    update_ward_status(@patient.id , 1)
+    update_ward_status(@patient.id, 1)
   end
 
   def patients
@@ -21,6 +21,8 @@ class Admin::PatientsController < ApplicationController
       format.js if Patient.delete(params[:id])
     end
   end
+
+  
 
   private
 
@@ -37,8 +39,10 @@ class Admin::PatientsController < ApplicationController
   end
 
   def update_ward_status(id, flag)
-    ward = WardOccupancyDetail.where(ward_name: Patient.find(id).ward_assigned )
-    ward.first.update(status: flag)
+    if id.present?
+      ward = WardOccupancyDetail.where(ward_name: Patient.find(id).ward_assigned )
+      ward.first.update(status: flag)
+    end
   end
 
   def redirect(format, message)

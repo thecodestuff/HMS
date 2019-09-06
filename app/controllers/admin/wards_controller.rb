@@ -25,6 +25,17 @@ class Admin::WardsController < ApplicationController
     end
   end
 
+  def update
+    @ward = WardOccupancyDetail.find(params[:id])
+    respond_to do |format|
+      if @ward.present?
+        @ward.update(status: 'EMPTY') if @ward.status == 'NOTEMPTY'
+        format.html { redirect_to admin_wards_path() }
+        format.js
+      end
+    end
+  end
+
   private
 
   def ward_params

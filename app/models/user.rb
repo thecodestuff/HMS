@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   enum role: %i[patient admin physician nurse]
-  has_one :patient
-  has_one :physician
+  has_one :patient, dependent: :destroy
+  has_one :physician, dependent: :destroy
+  
 
   validates :firstname, :lastname, :department, :phone, :role, presence: true
   validates :civil_id, length: { is: 10 }

@@ -13,6 +13,8 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        # Enqueing email to job
+        SendMailJob.set(wait: 10.seconds).perform_later(@user)
         format.html { redirect admin_users_path, 'user created successfully' }
       else
         format.html { redirect new_admin_user_path, @user.errors.messages }
@@ -36,7 +38,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    User.delete(params[:id])
+    User.destroy(params[:id])
     flash[:notice] = 'user deleted successfully...'
     redirect_to admin_users_path
   end

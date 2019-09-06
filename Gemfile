@@ -75,7 +75,14 @@ gem 'devise'
 gem 'hirb'
 
 # font awesome 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # postgres credentials manager 
 gem 'dotenv-rails'
+
+# figaro for enviornment varaible management 
+gem 'figaro'
+
+gem 'actionmailer'
+
+gem 'mail'
