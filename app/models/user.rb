@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   enum role: %i[patient admin physician nurse]
+
   has_one :patient, dependent: :destroy
   has_one :physician, dependent: :destroy
-  
 
   validates :firstname, :lastname, :department, :phone, :role, presence: true
   validates :civil_id, length: { is: 10 }
@@ -17,4 +17,5 @@ class User < ApplicationRecord
   scope :is_nurse,     -> { where(role: :nurse) }
   scope :is_physician, -> { where(role: :physician) }
   scope :is_patients,  -> { where(role: :patient) }
+  scope :by_role,  -> { where(role: role) } 
 end

@@ -51,7 +51,7 @@ class Admin::AppointmentsController < ApplicationController
       @appointments = Appointment.all
     else
       @appointments = Appointment.where(physician_id: current_user.physician)
-    end
+    end 
 
     @appointments.each do |appointment|
       record_array << [

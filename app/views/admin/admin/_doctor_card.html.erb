@@ -6,6 +6,7 @@
                   <i class="fas fa-fw fa-comments"></i>
                 </div>
                 <div class="mr-5">Today Appointments <br>
+                <%binding.pry%>
                    <h1><%= total = Appointment.today_appointment(current_user.physician).count %></h1>
                 </div>
               </div>
@@ -24,6 +25,7 @@
                   <i class="fas fa-fw fa-list"></i>
                 </div>
                 <div class="mr-5">Appointment Pending<br/>
+                   <%binding.pry%>
                    <h1><%= pending = Appointment.pending_appointment(current_user.physician).count %></h1>
                 </div>
               </div>

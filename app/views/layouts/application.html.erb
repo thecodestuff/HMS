@@ -11,7 +11,7 @@
   </head>
 
   <body>
-
+    <%= render 'shared/notice' %>
     <%= render 'shared/topnav' if current_user.present? %>
 
     <div id="wrapper">
@@ -21,7 +21,7 @@
       <div id="content-wrapper">
          <!---crumboard--->
         <%= render 'shared/crumboard' if current_user.present? %>
-        <%= yield %>
+        <div class="container"><%= yield %>
         <% if current_user.present? %>
         <!-- Sticky Footer -->
         <%= render 'shared/footer' %>

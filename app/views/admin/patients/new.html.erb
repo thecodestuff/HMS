@@ -1,6 +1,6 @@
 <div class="form-wrapper" style="width:400px;margin:0px auto">
   <h1>Admit patient</h1>
-  <%= form_for @patient, url:{action:'create'} do |f|%>
+  <%= form_for @patient, url:{action:'create'}, remote:true do |f|%>
     <%= render 'form', :f=>f%>
   <% end %>
 </div>
