@@ -6,7 +6,7 @@ class Admin::PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     respond_to do |format|
-      @patient.save ? redirect(format, 'patient admitted...') : redirect(format, 'unprocessable entity...')
+      @patient.save ? redirect(format, 'patient admitted...') : redirect(format, 'patient already admitted')
     end
     update_ward_status(@patient.id, 1)
   end

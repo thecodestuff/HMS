@@ -6,56 +6,45 @@
       <%= link_to 'Home' , admin_root_path , class: "nav-link"%>
     </li>
     <% if current_user.admin? %>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" data-target="#submenu" href="#">User management</a>
-      <ul id="submenu" class="navbar-nav collapse">
-
-          <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path %>">  Users</a>
-          </li>
-
-          <li class="nav-item ">
-             <a class="nav-link" href="<%= new_admin_user_path %>">  Create User</a>
-          </li>
-
-          <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path(:role=>'administrators')%>">  Administrators</a>
-          </li>
-         <li class="nav-item" >
-             <a class="nav-link" href="<%= admin_users_path(:role=>'doctor')%>">  Doctors</a>
-         
-         </li>
-         <li class="nav-item ">
-            <a class="nav-link" href="<%= admin_users_path(:role=>'nurse')%>">  Nurses</a>
-         </li>
-         <li class="nav-item ">
-             <a class="nav-link" href="<%= admin_users_path(:role=>'patient')%>">  Patients</a>
-         </li>
-
-      </ul>
-
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="<%= admin_appointments_path %>">Manage apointment</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="<%= new_admin_patient_path %>">Admit patients</a>
-    </li>
-
-    <% end %>
-
-   <% if !current_user.admin? %>
       <li class="nav-item">
-				<a class="nav-link" href="#">Refferals 
-					<span class="badge badge-pill badge-warning">5</span>
-				</a>
+        <a class="nav-link" data-toggle="collapse" data-target="#submenu" href="#">User management</a>
+        <ul id="submenu" class="navbar-nav collapse">
+            <li class="nav-item ">
+               <a class="nav-link" href="<%= admin_users_path %>">  Users</a>
+            </li>
+            <li class="nav-item ">
+               <a class="nav-link" href="<%= new_admin_user_path %>">  Create User</a>
+            </li>
+            <li class="nav-item ">
+               <a class="nav-link" href="<%= admin_users_path(:role=>'administrators')%>">  Administrators</a>
+            </li>
+           <li class="nav-item" >
+               <a class="nav-link" href="<%= admin_users_path(:role=>'doctor')%>">  Doctors</a>
+           </li>
+           <li class="nav-item ">
+              <a class="nav-link" href="<%= admin_users_path(:role=>'nurse')%>">  Nurses</a>
+           </li>
+           <li class="nav-item ">
+               <a class="nav-link" href="<%= admin_users_path(:role=>'patient')%>">  Patients</a>
+           </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<%= admin_appointments_path %>">Manage apointment</a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link" href="<%= new_admin_patient_path %>">Admit patients</a>
+      </li>
+
+    <% else %>
+
+      <li class="nav-item">
+				<a class="nav-link" href="#">Refferals </a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="#">Appointments
-      <span class="badge badge-pill badge-warning">2</span>
-      </a>
+      <a class="nav-link" href="#">Appointments</a>
       </li>
    <% end %>
     <li class="nav-item">

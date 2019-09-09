@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :find_user, only: %i[update edit]
-  after_action :update_physician_table, only: %i[create], if: -> { @user.save }
+  #after_action :update_physician_table, only: %i[create], if: -> { @user.save }
   
   def index
     @users = User.all
@@ -14,12 +14,13 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        update_physician_table(@user)
         # Enqueing email to job
-        SendMailJob.set(wait: 10.seconds).perform_later(@user)
+        SendMailJob.perform_later(@user)
         format.html { redirect admin_users_path, 'user created successfully' }
       else
         @form_errors = @user
-        format.html { render :new, form_errors: @form_errors}
+        format.html { render :new, form_errors: @form_errors }
       end
     end
   end
@@ -61,10 +62,10 @@ class Admin::UsersController < ApplicationController
   end
 
   def redirect(url, message)
-    redirect_to url, message.to_s
+    redirect_to url, notice: message.to_s
   end
 
-  def update_physician_table
-    @user.create_physician if @user.valid? && @user.role == 'physician'
+  def update_physician_table(user)
+    user.create_physician if user.valid? && user.role == 'physician'
   end
 end
