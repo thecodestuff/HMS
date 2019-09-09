@@ -21,6 +21,7 @@
       <div id="content-wrapper">
          <!---crumboard--->
         <%= render 'shared/crumboard' if current_user.present? %>
+        <%= yield :form_errors %>
         <div class="container"><%= yield %>
         <% if current_user.present? %>
         <!-- Sticky Footer -->
