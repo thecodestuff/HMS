@@ -15,6 +15,15 @@ class Admin::PatientsController < ApplicationController
     @patients = Patient.all
   end
 
+  def update
+    @patient = Patient.find(params[:id])
+    respond_to do |format|
+      @patient.update(status: 'discharged') if @patient.status != 'discharged'
+      format.html { redirect_to admin_discharge_path, flash[:notice]='patient dischared success' }
+      format.js
+    end
+  end
+
   def destroy
     update_ward_status(params[:id],0)
     respond_to do |format|

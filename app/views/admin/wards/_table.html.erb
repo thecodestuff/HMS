@@ -1,18 +1,16 @@
-
-   
-   <table class="table table-bordered table-striped table-hover" id="wards">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Ward Name</th>
-        <th>Ward Type</th>
-        <th>Status</th>
-        <th>Action</th>    
-      </tr>
-    </thead>
-    <tbody>
-      <% @wards.each do |ward|%>
-        <%= render 'row', ward: ward %>
-      <% end %>
-    </tbody>
-  </table>   
+<table class="table table-bordered table-striped table-hover" id="wards">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Ward Name</th>
+      <th>Ward Type</th>
+      <th>Status</th>
+      <th>Action</th>    
+    </tr>
+  </thead>
+  <tbody>
+    <% @wards.each do |ward|%>
+       <%= render 'row', ward: ward %>
+     <% end %>
+  </tbody>
+</table>   
