@@ -2,18 +2,9 @@ function updateFlash(){
   $('.notice').html("Appointment sheduled successfully...")
 }
 
-/*function renderAppointmentTable(){
-  $("#appointmentsTable tbody").append(
-    "<tr>" +
-        "<td>23</td>" +
-        "<td>p chidambaram</td>" +
-        "<td>amit sha</td>" +
-        "<td>2019-09-34</td>" +
-        "<td>cancel</td>" +
-        "<td>done</td>"+ 
-      "</tr>"
-  );
-}*/
-updateFlash();
+function renderAppointmentTable(){
+  $("#appointmentsTable tbody").append('<%= j render 'table_row', appointment:@appointment.last %>');
+}
 
-/*renderAppointmentTable();*/
+renderAppointmentTable() ;
+updateFlash();

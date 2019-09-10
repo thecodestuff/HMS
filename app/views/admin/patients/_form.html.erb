@@ -7,7 +7,7 @@
   <%= f.label :patient_type %>
   <%= f.select(:patient_type) do %>
     <% Patient.patient_types.each do |c| %>
-      <%= content_tag(:option , c.first.to_s , value: c.first.to_s) %>      
+      <%= content_tag(:option , c.first.to_s.humanize , value: c.first.to_s) %>      
     <% end %>
   <% end %>
 </div>
@@ -20,7 +20,7 @@
   <%= f.label :status %>
   <%= f.select(:status) do %>
     <% Patient.statuses.each do |c| %>
-      <%= content_tag(:option , c.first.to_s , value: c.first.to_s) %>      
+      <%= content_tag(:option , c.first.to_s.humanize , value: c.first.to_s) %>      
     <% end %>
   <% end %>
 </div>

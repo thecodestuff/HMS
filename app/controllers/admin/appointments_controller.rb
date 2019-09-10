@@ -12,8 +12,10 @@ class Admin::AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
+    #byebug
     respond_to do |format|
       if @appointment.save
+        @appointment = fetch_records
         format.js do
           flash.now[:notice] = 'appointment scheduled successfuly..'
         end
@@ -52,6 +54,7 @@ class Admin::AppointmentsController < ApplicationController
         appointment.id,
         appointment.patient.user.firstname,
         appointment.physician.user.firstname,
+        appointment.status,
         appointment.appointment_date
       ]
     end
