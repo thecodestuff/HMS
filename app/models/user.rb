@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_one :patient, dependent: :destroy
   has_one :physician, dependent: :destroy
+  has_one_attached :avatar
 
   validates :firstname, :lastname, :department, :phone, :role, presence: true
   validates :civil_id, length: { is: 10 }

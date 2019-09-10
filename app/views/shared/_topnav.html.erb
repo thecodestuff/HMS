@@ -20,7 +20,7 @@
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0 ">
       <li class="nav-item active ">
-        <h5 class="nav-link text-center"><%= current_user.firstname.humanize %></h5>
+        <h5 class="nav-link text-center"><%= image_tag current_user.avatar, class:'rounded-circle',width:'30px',height:'30px' %></h5>
       </li>
       
       <li class="nav-item ">

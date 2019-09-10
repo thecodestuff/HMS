@@ -53,7 +53,7 @@ class Admin::UsersController < ApplicationController
       :firstname, :lastname, :civil_id, :email, :password,
       :previlige_level, :admin, :department, :phone, :blood_group,
       :age, :house_no, :street, :locality, :city,
-      :state, :country, :pincode, :role
+      :state, :country, :pincode, :role, :avatar
     )
   end
 
