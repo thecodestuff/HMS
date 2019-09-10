@@ -1,21 +1,18 @@
 
 <div class="form-group">
   <%= f.label :physician_id %>
-
   <%= f.select(:physician_id, options_for_select(get_physician_names)) %>
 </div>
 
 <div class="form-group">
   <%= f.label :patient_id %>
-  <%= f.select( :patient_id, options_for_select( get_patient_names ) ) %>
+  <%= f.select(:patient_id, options_for_select(get_patient_names)) %>
 </div>
 
 <div class="form-group">
   <%= f.label :date %>
   <input type="date"  name="appointment[appointment_date]" id="datePickerId" >
 </div>
-
-
 <div class="form-group">
   <%= f.submit "Shedule Appointment", class:"form-control btn btn-primary" %>    
 </div>

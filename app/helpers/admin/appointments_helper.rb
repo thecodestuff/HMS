@@ -4,6 +4,6 @@ module Admin::AppointmentsHelper
   end
 
   def get_patient_names
-    User.is_patients.collect { |user| [user.firstname, user.patient.id] if user.patient.present? }
+    User.is_patients.collect { |user| [user.firstname, user.patient.id] if user.patient.present? }.compact
   end
 end

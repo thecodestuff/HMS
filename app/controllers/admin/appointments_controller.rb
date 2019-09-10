@@ -12,7 +12,6 @@ class Admin::AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    #byebug
     respond_to do |format|
       if @appointment.save
         @appointment = fetch_records

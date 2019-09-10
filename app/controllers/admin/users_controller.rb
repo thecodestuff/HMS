@@ -1,7 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :find_user, only: %i[update edit]
-  #after_action :update_physician_table, only: %i[create], if: -> { @user.save }
-  
+
   def index
     @users = User.all
   end

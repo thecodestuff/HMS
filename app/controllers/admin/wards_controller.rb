@@ -7,12 +7,9 @@ class Admin::WardsController < ApplicationController
   def create
     @ward = WardOccupancyDetail.create(ward_params)
     respond_to do |format|
-      if @ward.save
-        format.html { redirect_to admin_wards_path, notice: 'ward created success.' }
-        format.js
-      else 
-        format.html { redirect_to admins_ward_path, notice: 'ward not created...'}
-      end
+      format.html { redirect_to admins_ward_path, notice: 'ward not created...'} unless @ward.save
+      format.html { redirect_to admin_wards_path, notice: 'ward created success.' }
+      format.js
     end
   end
 
@@ -41,5 +38,9 @@ class Admin::WardsController < ApplicationController
   def ward_params
     params.require(:ward_occupancy_detail).permit(
       :id, :ward_name, :ward_type, :status)
+  end
+
+  def redirect
+    redirect_to 
   end
 end

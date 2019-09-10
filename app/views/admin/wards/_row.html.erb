@@ -1,11 +1,10 @@
 <tr>
-   <td><%= ward.id %></td>
-   <td><%= ward.ward_name%></td>
-   <td><%= ward.ward_type%></td>
-   <td><%= ward.status %></td> 
-   <td>
-      <!--a href="#" class="btn btn-info">Edit</a-->
-      <%= link_to ward.status, admin_ward_path(ward), remote: true, method: 'put', class: 'btn btn-warning update_row'%>
-      <%= link_to 'Delete', admin_ward_path(ward), method: :delete, remote: true, class: 'btn btn-danger delete_row'%>
-   </td>          
+	<td><%= ward.id %></td>
+	<td><%= ward.ward_name%></td>
+	<td><%= ward.ward_type%></td>
+	<td><%= ward.status %></td> 
+	<td>
+	  <%= link_to ward.status, admin_ward_path(ward), remote: true, method: 'put', class: 'btn btn-warning update_row'%>
+	  <%= link_to 'Delete', admin_ward_path(ward), method: :delete, remote: true, class: 'btn btn-danger delete_row'%>
+	</td>          
 </tr>
