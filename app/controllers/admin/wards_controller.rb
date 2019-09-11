@@ -17,7 +17,7 @@ class Admin::WardsController < ApplicationController
     respond_to do |format|
       if WardOccupancyDetail.delete(params[:id])
         format.html { redirect admin_wards_path, 'deleted success' }
-        #format.js
+        format.js
       end
     end
   end
@@ -35,7 +35,8 @@ class Admin::WardsController < ApplicationController
 
   def ward_params
     params.require(:ward_occupancy_detail).permit(
-      :id, :ward_name, :ward_type, :status)
+      :id, :ward_name, :ward_type, :status
+    )
   end
 
   def redirect(path, message)
