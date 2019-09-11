@@ -1,8 +1,9 @@
 class Admin::AppointmentsController < ApplicationController
   def index
     @appointment = Appointment.new
+    @appointments = paginate(fetch_records)
     respond_to do |format|
-      format.html { @appointments = fetch_records }
+      format.html { @appointments }
     end
   end
 
@@ -13,15 +14,9 @@ class Admin::AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     respond_to do |format|
-      if @appointment.save
-        @appointment = fetch_records
-        format.js do
-          flash.now[:notice] = 'appointment scheduled successfuly..'
-        end
-      else
-        flash[:notice] = @appointment.errors.details.to_s
-        redirect_to new_admin_appointment_path
-      end
+      flash[:notice] = 'Operation failed' unless @appointment.save
+      format.html { redirect_to new_admin_appointment_path }
+      format.js { @appointment = fetch_records }
     end
   end
 
@@ -57,5 +52,9 @@ class Admin::AppointmentsController < ApplicationController
         appointment.appointment_date
       ]
     end
+  end
+
+  def paginate(appointments)
+    @paginate_appointments = Kaminari.paginate_array(appointments).page(params[:page]).per(4)
   end
 end

@@ -14,7 +14,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
-  scope :is_admin,     -> { where(admin: true) }
+  scope :is_admin,     -> { where(role: :admin) }
   scope :is_nurse,     -> { where(role: :nurse) }
   scope :is_physician, -> { where(role: :physician) }
   scope :is_patients,  -> { where(role: :patient) }

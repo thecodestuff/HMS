@@ -8,7 +8,9 @@
 </div>
 
 <%= render 'table'%>
-
+<div class="paginationbox">
+  <%= paginate @wards, theme: 'twitter-bootstrap-4' %>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="popup" role="dialog">
   <div class="modal-dialog modal-sm">

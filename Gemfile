@@ -85,5 +85,9 @@ gem 'dotenv-rails'
 gem 'figaro'
 
 gem 'actionmailer'
-
+# for mailing 
 gem 'mail'
+# kaminari for pagination
+gem 'kaminari'
+#gem 'kaminari-bootstrap'
+gem 'bootstrap4-kaminari-views'

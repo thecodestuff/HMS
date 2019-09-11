@@ -2,7 +2,11 @@ class Admin::UsersController < ApplicationController
   before_action :find_user, only: %i[update edit]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
+    @admins = User.is_admin.page(params[:admin_tab]).per(1)
+    @patients = User.is_patients.page(params[:admin_tab]).per(2)
+    @physicians = User.is_physician.page(params[:physician_tab]).per(1)
+    @nurses = User.is_nurse.page(params[:nurse_tab]).per(1)
   end
 
   def new
@@ -18,8 +22,7 @@ class Admin::UsersController < ApplicationController
         SendMailJob.perform_later(@user)
         format.html { redirect admin_users_path, 'user created successfully' }
       else
-        @form_errors = @user
-        format.html { render :new, form_errors: @form_errors }
+        format.html { render :new, form_errors: @form_errors = @user }
       end
     end
   end
@@ -41,7 +44,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     User.destroy(params[:id])
-    flash[:notice] = 'user deleted successfully...'
+    flash[:notice] = 'user deleted successfully'
     redirect_to admin_users_path
   end
 

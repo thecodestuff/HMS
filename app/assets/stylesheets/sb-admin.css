@@ -16,7 +16,10 @@
 .logout i{
   color:white;
 }
-
+.paginationbox{
+  width: 400px;
+  margin: 0px auto;
+}
 .noticebox{
   position: absolute;
   z-index: 3;

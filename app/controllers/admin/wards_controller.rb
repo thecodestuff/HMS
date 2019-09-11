@@ -1,6 +1,6 @@
 class Admin::WardsController < ApplicationController
   def index
-    @wards = WardOccupancyDetail.all
+    @wards = WardOccupancyDetail.order('created_at DESC').page(params[:page])
     @ward = WardOccupancyDetail.new
   end
 

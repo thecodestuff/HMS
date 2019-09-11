@@ -1,5 +1,8 @@
-<h1>List of Patients
+<h2>List of Patients
   <span class="badge badge-pill badge-info"><%= User.is_patients.count %></span>
-</h1>
-<% @users = User.is_patients %>
+</h2>
+<% @users = @patients %>
 <%= render 'table' %>
+<div class="paginationbox">
+  <%= paginate @users, param_name: :patient_tab, theme: 'twitter-bootstrap-4' %>
+</div>

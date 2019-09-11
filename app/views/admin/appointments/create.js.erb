@@ -6,5 +6,6 @@ function renderAppointmentTable(){
   $("#appointmentsTable tbody").append('<%= j render 'table_row', appointment:@appointment.last %>');
 }
 
+$("#popup").modal('hide');
 renderAppointmentTable() ;
 updateFlash();

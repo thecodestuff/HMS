@@ -1,38 +1,38 @@
-<div class="container-fluid">
-   <div class="row">
-      <div class="col-lg-5"></div>
-      <div class="col-lg-5">
-
-      <h1 class="justify-center">Login</h1>
-
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-      
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
-      
-        <div class="actions">
-          <%= f.submit "Log in" %>
-        </div>
-      <% end %>
-      
-      <%= render "devise/shared/links" %>
-      
-
-
+<!-- Sing in  Form -->
+<section class="sign-in">
+  <div class="container customcontainer">
+    <div class="signin-content">
+      <div class="signin-image">
+        <figure><img src="<%= asset_path('signin-image.jpg') %>" alt="sing up image"></figure>
+        <a href="#" class="signup-image-link">Create an account</a>
       </div>
-      <div class="col-lg-2"></div>
-   </div>
-</div>
+      <div class="signin-form">
+        <h2 class="form-title">Sign up</h2>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html=> { class: "register-form", id:"login-form" }) do |f| %>
+            <div class="form-group">
+              <label for="user_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Your email" %>
+            </div>
+            <div class="form-group">
+              <label for="user_password"><i class="zmdi zmdi-lock"></i></label>
+              <%= f.password_field :password, autocomplete: "current-password", placeholder:"Password" %>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+              <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+            </div>
+            <div class="form-group form-button">
+            <%= f.submit "Log in", class:"form-submit" %>
+            </div>
+          <%end%>
+        <div class="social-login">
+            <span class="social-label">Or login with</span>
+            <ul class="socials">
+                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook fa fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter fa fa-twitter"></i></a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
