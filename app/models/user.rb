@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  enum role: %i[patient admin physician nurse]
+  enum role: %i[Patient Admin Physician Nurse]
+  before_save :humanize_name
 
   has_one :patient, dependent: :destroy
   has_one :physician, dependent: :destroy
@@ -9,14 +10,18 @@ class User < ApplicationRecord
   validates :civil_id, length: { is: 10 }
   validates :password, length: { in: 6..10 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable,
-         :recoverable, :rememberable, :validatable
 
-  scope :is_admin,     -> { where(role: :admin) }
-  scope :is_nurse,     -> { where(role: :nurse) }
-  scope :is_physician, -> { where(role: :physician) }
-  scope :is_patients,  -> { where(role: :patient) }
-  scope :by_role,  -> { where(role: role) } 
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
+
+  scope :is_admin,     -> { where(role: :Admin) }
+  scope :is_nurse,     -> { where(role: :Nurse) }
+  scope :is_physician, -> { where(role: :Physician) }
+  scope :is_patients,  -> { where(role: :Patient) }
+  scope :by_role,  -> { where(role: role) }
+
+  def humanize_name
+    self.firstname = self.firstname.humanize
+    self.lastname = self.lastname.humanize
+    #self.firstname, self.lastname = [:firstname, :lastname].map{ |var| self.var.humanize }
+  end
 end

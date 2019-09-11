@@ -1,7 +1,7 @@
 <tr>
     <td><%= patient.id %></td>
-    <td><%= patient.user.firstname %></td>
-    <td><%= patient.patient_type %></td>
+    <td><%= patient.user.firstname.humanize %></td>
+    <td><%= patient.patient_type.humanize %></td>
     <td><%= patient.ward_assigned %></td>
     <td><%= patient.admit_date %></td>
     <td><%= patient.dischagre_on %></td>

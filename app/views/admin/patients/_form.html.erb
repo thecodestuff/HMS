@@ -18,15 +18,9 @@
 
 <div class="form-group">
   <%= f.label :status %>
-  <%= f.select(:status) do %>
-    <% Patient.statuses.each do |c| %>
-      <%= content_tag(:option , c.first.to_s.humanize , value: c.first.to_s) %>      
-    <% end %>
-  <% end %>
+  <%= f.select :status, options_for_select(Patient.statuses.collect{ |key,value| [key.humanize,key]}), class: 'form-control',  prompt: "choose status" %>
 </div>
 
 <div class="form-group">
   <%= f.submit "Admit Patient", class:"form-control btn btn-primary" %>    
 </div>
-
-

@@ -27,7 +27,7 @@ class Admin::PatientsController < ApplicationController
   def destroy
     update_ward_status(params[:id],0)
     respond_to do |format|
-      format.js if Patient.delete(params[:id])
+      format.js if Patient.destroy(params[:id])
     end
   end
 
