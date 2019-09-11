@@ -7,8 +7,8 @@ class Admin::WardsController < ApplicationController
   def create
     @ward = WardOccupancyDetail.create(ward_params)
     respond_to do |format|
-      format.html { redirect_to admins_ward_path, notice: 'ward not created...'} unless @ward.save
-      format.html { redirect_to admin_wards_path, notice: 'ward created success.' }
+      format.html { redirect admins_ward_path, 'failed' } unless @ward.save
+      format.html { redirect admin_wards_path, 'ward created success' }
       format.js
     end
   end
@@ -16,8 +16,8 @@ class Admin::WardsController < ApplicationController
   def destroy
     respond_to do |format|
       if WardOccupancyDetail.delete(params[:id])
-        format.html { redirect_to admin_wards_path, notice: 'deleted success...' }
-        format.js
+        format.html { redirect admin_wards_path, 'deleted success' }
+        #format.js
       end
     end
   end
@@ -25,11 +25,9 @@ class Admin::WardsController < ApplicationController
   def update
     @ward = WardOccupancyDetail.find(params[:id])
     respond_to do |format|
-      if @ward.present?
-        @ward.update(status: 'EMPTY') if @ward.status == 'NOTEMPTY'
-        format.html { redirect_to admin_wards_path() }
-        format.js
-      end
+      @ward.update(status: 'EMPTY') if @ward.status == 'NOTEMPTY'
+      format.html { redirect_to admin_wards_path }
+      format.js
     end
   end
 
@@ -40,7 +38,7 @@ class Admin::WardsController < ApplicationController
       :id, :ward_name, :ward_type, :status)
   end
 
-  def redirect
-    redirect_to 
+  def redirect(path, message)
+    redirect_to path, notice: message
   end
 end

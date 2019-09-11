@@ -16,6 +16,16 @@
 .logout i{
   color:white;
 }
+
+.noticebox{
+  position: absolute;
+  z-index: 3;
+  margin-left: 1048px;
+  float: right;
+  width: 300px;
+  text-align: center;
+}
+
 .errors{
   margin:0 auto;
   border: 1px solid red;
@@ -5465,11 +5475,13 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .alert {
-  position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+}
+.alert p{
+  margin-top: 10px;
 }
 
 .alert-heading {
