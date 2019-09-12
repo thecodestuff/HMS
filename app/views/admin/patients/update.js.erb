@@ -1,6 +1,13 @@
 function updateStatus(){
   $("#update_status").bind('ajax:success',function(){
     $(this).html("Discharged");
+    updateDischargeDate();
   });
+}
+
+function updateDischargeDate(){
+  var today = new Date 
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+  $("#discharge").html(date)
 }
 updateStatus();

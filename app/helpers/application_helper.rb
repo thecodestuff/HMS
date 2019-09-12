@@ -5,6 +5,6 @@ module ApplicationHelper
   end
 
   def format_date(date)
-    date.strftime('%d %B %Y')
+    date.strftime("%d %B %Y") if date.present?
   end
 end
