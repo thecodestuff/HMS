@@ -19,13 +19,13 @@ class Admin::PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     respond_to do |format|
       @patient.update(status: 'discharged') if @patient.status != 'discharged'
-      format.html { redirect_to admin_discharge_path, flash[:notice]='patient dischared success' }
+      format.html { redirect admin_discharge_path, 'patient dischared success' }
       format.js
     end
   end
 
   def destroy
-    update_ward_status(params[:id],0)
+    update_ward_status(params[:id], 0)
     respond_to do |format|
       format.js if Patient.destroy(params[:id])
     end
@@ -57,9 +57,5 @@ class Admin::PatientsController < ApplicationController
       ward = WardOccupancyDetail.where(ward_name: Patient.find(id).ward_assigned)
       ward.first.update(status: flag)
     end
-  end
-
-  def redirect(format, message)
-    format.html { redirect_to new_admin_patient_path, notice: message }
   end
 end

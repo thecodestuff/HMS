@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::Base
-
   # method to redirect login user to particular route
   def after_sign_in_path_for(resource)
-    if current_user.admin?
-      stored_location_for(resource) || admin_root_path
-    else
-      stored_location_for(resource) || admin_root_path
-    end
+    stored_location_for(resource) || admin_root_path
+  end
+
+  def redirect(path, message)
+    redirect_to path, notice: message.to_s
   end
 end

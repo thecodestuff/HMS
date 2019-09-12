@@ -45,10 +45,8 @@ class Admin::AppointmentsController < ApplicationController
     @appointments = current_user.admin? ? Appointment.all : Appointment.current_user(current_user.physician)
     @appointments.collect do |appointment|
       [
-        appointment.id,
-        appointment.patient.user.firstname,
-        appointment.physician.user.firstname,
-        appointment.status,
+        appointment.id, appointment.patient.user.firstname,
+        appointment.physician.user.firstname, appointment.status,
         appointment.appointment_date
       ]
     end

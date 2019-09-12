@@ -1,13 +1,10 @@
 class Admin::UsersController < ApplicationController
   before_action :find_user, only: %i[update edit]
-
-  def index
-    @users = User.page(params[:page])
-    @admins = User.is_admin.page(params[:admin_tab]).per(1)
-    @patients = User.is_patients.page(params[:admin_tab]).per(2)
-    @physicians = User.is_physician.page(params[:physician_tab]).per(1)
-    @nurses = User.is_nurse.page(params[:nurse_tab]).per(1)
-  end
+  before_action :paginate_user, only: %i[index]
+  before_action :paginate_admin_user, only: %i[index]
+  before_action :paginate_patient_user, only: %i[index]
+  before_action :paginate_physician_user, only: %i[index]
+  before_action :paginate_nurse_user, only: %i[index]
 
   def new
     @user = User.new
@@ -26,12 +23,6 @@ class Admin::UsersController < ApplicationController
       end
     end
   end
-
-  def show
-    render html: 'hello'
-  end
-
-  def edit; end
 
   def update
     if @user.update(user_params)
@@ -63,11 +54,27 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def redirect(url, message)
-    redirect_to url, notice: message.to_s
-  end
-
   def update_physician_table(user)
     user.create_physician if user.valid? && user.role == 'physician'
+  end
+
+  def paginate_user
+    @users = User.page(params[:page])
+  end
+
+  def paginate_admin_user
+    @admins = @users.is_admin.page(params[:admin_tab]).per(1)
+  end
+
+  def paginate_physician_user
+    @physicians = @users.is_physician.page(params[:physician_tab]).per(1)
+  end
+
+  def paginate_patient_user
+    @patients = @users.is_patients.page(params[:admin_tab]).per(2)
+  end
+
+  def paginate_nurse_user
+    @nurses = @users.is_nurse.page(params[:nurse_tab]).per(1)
   end
 end
