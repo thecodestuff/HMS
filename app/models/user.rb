@@ -22,6 +22,5 @@ class User < ApplicationRecord
   def humanize_name
     self.firstname = self.firstname.humanize
     self.lastname = self.lastname.humanize
-    #self.firstname, self.lastname = [:firstname, :lastname].map{ |var| self.var.humanize }
   end
 end

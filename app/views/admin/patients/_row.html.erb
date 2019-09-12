@@ -3,8 +3,8 @@
     <td><%= patient.user.firstname.humanize %></td>
     <td><%= patient.patient_type.humanize %></td>
     <td><%= patient.ward_assigned %></td>
-    <td><%= patient.admit_date %></td>
-    <td><%= patient.dischagre_on %></td>
+    <td><%= format_date(patient.admit_date) %></td>
+    <td><%= format_date(patient.dischagre_on) %></td>
     <td>
       <% name = patient.status!='discharged'? 'Discharge': patient.status.humanize %>
       <%= link_to name, admin_patient_path(patient),method: 'patch',remote:true, class:'btn btn-success', id:'update_status' %>

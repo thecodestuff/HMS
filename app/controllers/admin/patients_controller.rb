@@ -12,7 +12,7 @@ class Admin::PatientsController < ApplicationController
   end
 
   def patients
-    @patients = Patient.all
+    @patients = Patient.page(params[:page]).per(5)
   end
 
   def update
@@ -31,8 +31,6 @@ class Admin::PatientsController < ApplicationController
     end
   end
 
-  
-
   private
 
   def patient_params
@@ -49,7 +47,7 @@ class Admin::PatientsController < ApplicationController
 
   def update_ward_status(id, flag)
     if id.present?
-      ward = WardOccupancyDetail.where(ward_name: Patient.find(id).ward_assigned )
+      ward = WardOccupancyDetail.where(ward_name: Patient.find(id).ward_assigned)
       ward.first.update(status: flag)
     end
   end
