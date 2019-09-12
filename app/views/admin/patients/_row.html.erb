@@ -1,15 +1,40 @@
 <tr>
-    <td><%= patient.id %></td>
-    <td><%= patient.user.firstname.humanize %></td>
-    <td><%= patient.patient_type.humanize %></td>
-    <td><%= patient.ward_assigned %></td>
-    <td><%= format_date(patient.admit_date) %></td>
-    <td><%= format_date(patient.dischagre_on) %></td>
-    <td>
-      <% name = patient.status!='discharged'? 'Discharge': patient.status.humanize %>
-      <%= link_to name, admin_patient_path(patient),method: 'patch',remote:true, class:'btn btn-success', id:'update_status' %>
-      <%= link_to 'Delete', admin_patient_path(patient),method: 'delete',remote:true, class:'btn btn-danger', id:'delete_row' %>
-      <a href="#" class="btn btn-warning">admit</a>
-      <%= link_to 'Billing', admin_patient_path(patient), class:'btn btn-info' %>
-    </td>
+  <td><%= patient.id %></td>
+  <td><%= patient.user.firstname.humanize %></td>
+  <td><%= patient.patient_type.humanize %></td>
+  <td><%= patient.ward_assigned %></td>
+  <td><%= format_date(patient.admit_date) %></td>
+  <td><%= format_date(patient.dischagre_on) %></td>
+  <td>
+    <% name = patient.status!='discharged'? 'Discharge': patient.status.humanize %>
+    <%= link_to name, admin_patient_path(patient),method: 'patch',remote:true, class:'btn btn-success', id:'update_status' %>
+    <%= link_to 'Delete', admin_patient_path(patient),method: 'delete',remote:true, class:'btn btn-danger', id:'delete_row' %>
+    <a href="#" class="btn btn-warning">admit</a>
+    <%= link_to 'Billing', admin_payment_path(patient), class:'btn btn-info' %>
+  </td>
   </tr>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>

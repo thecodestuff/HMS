@@ -6,5 +6,5 @@ class WardOccupancyDetail < ApplicationRecord
   validates_uniqueness_of :ward_name
 
   scope :wards, -> { count }
-  scope :empty, -> { where(status: 0) }
+  scope :empty, -> { where(status: 'EMPTY') }
 end

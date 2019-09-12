@@ -31,6 +31,13 @@ class Admin::PatientsController < ApplicationController
     end
   end
 
+  def billing
+    patient = Patient.find(params[:id]) if params[:id].present?
+    no_of_appointments = patient.appointments.count
+    no_of_day_in_ward = patient.dischagre_on.day - patient.admit_date.day
+    render html: "#Number of appointmetns = #{no_of_appointments}*RATE + #{no_of_day_in_ward}*RATES = Bill amount"
+  end
+
   private
 
   def patient_params
