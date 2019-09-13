@@ -7,7 +7,7 @@
         <a href="#" class="signup-image-link">Create an account</a>
       </div>
       <div class="signin-form">
-        <h2 class="form-title">Sign up</h2>
+        <h2 class="form-title">Login</h2>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html=> { class: "register-form", id:"login-form" }) do |f| %>
             <div class="form-group">
               <label for="user_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -30,6 +30,7 @@
             <ul class="socials">
                 <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook fa fa-facebook-f"></i></a></li>
                 <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="display-flex-center zmdi zmdi-google fa fa-google"></i></a></li>
             </ul>
         </div>
       </div>

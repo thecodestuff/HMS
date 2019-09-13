@@ -1,21 +1,21 @@
 <ul class="nav nav-tabs nav-pills custom_tabs">
-  <li class="active"><a data-toggle="pill" href="#home">Administration</a></li>
-  <li><a data-toggle="pill" href="#menu1">Doctor</a></li>
-  <li><a data-toggle="pill" href="#menu2">Patients</a></li>
-  <li><a data-toggle="pill" href="#menu3">Nurses</a></li>
+  <li class="active"><a data-toggle="pill" href="#admin">Administration</a></li>
+  <li><a data-toggle="pill" href="#physician">Doctor</a></li>
+  <li><a data-toggle="pill" href="#patient">Patients</a></li>
+  <li><a data-toggle="pill" href="#nurse">Nurses</a></li>
 </ul>
   
 <div class="tab-content">
-  <div id="home" class="tab-pane fade show active">
+  <div id="admin" class="tab-pane fade show active">
     <%= render 'admin_user' %>
   </div>
-  <div id="menu1" class="tab-pane fade">
+  <div id="physician" class="tab-pane fade">
     <%= render 'doctor_user' %>
   </div>
-  <div id="menu2" class="tab-pane fade">
+  <div id="patient" class="tab-pane fade">
     <%= render 'patient_user' %>
   </div>
-  <div id="menu3" class="tab-pane fade">
+  <div id="nurse" class="tab-pane fade">
     <%= render 'nurse_user' %>
   </div>
 </div>
