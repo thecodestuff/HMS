@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_100433) do
     t.date "admit_date"
     t.date "dischagre_on"
     t.integer "status", default: 0
+    t.integer "ward_occupancy_detail_id", default: 0
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
@@ -103,7 +104,6 @@ ActiveRecord::Schema.define(version: 2019_09_13_100433) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "ward_occupancy_detail_id", default: 0
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

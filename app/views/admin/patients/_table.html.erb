@@ -10,7 +10,7 @@
   </tr>
   <tbody>
     <% @patients.each do |patient| %>
-      <%= render 'row', patient: patient if patient.user.present? %>
+      <%= render 'row', patient: patient  %>
     <%end%>
   </tbody>
 </table>

@@ -3,10 +3,12 @@ class Patient < ApplicationRecord
   enum status: %i[not_admit admit refered discharged]
 
   before_create :dump_admit_date
+  after_create :update_ward_status
+  after_update :update_ward_status
   before_update :dump_discharge_date
 
   belongs_to :user
-  belongs_to :WardOccupancyDetail
+  belongs_to :ward_occupancy_detail
   has_many :appointments, dependent: :destroy
   has_many :physicians, through: :appointments
 
@@ -18,5 +20,13 @@ class Patient < ApplicationRecord
 
   def dump_discharge_date
     self.dischagre_on = Date.current unless self.dischagre_on.present?
+  end
+
+  def update_ward_status
+      #byebug
+      # ward = WardOccupancyDetail.where(ward_name: Patient.find(params[:user_id]).ward_assigned)
+      # ward.first.update(status: :foo)
+      self.ward_occupancy_detail.update(status: 'not_empty') if self.status == 'admit'
+      self.ward_occupancy_detail.update(status: 'empty') if self.status == 'discharged'
   end
 end

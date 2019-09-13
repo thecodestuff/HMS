@@ -11,24 +11,23 @@
   </head>
 
   <body>
-    <%= render 'shared/notice' %>
-    <%= render 'shared/topnav' if current_user.present? %>
-
-    <div id="wrapper">
-      <!-- Sidebar -->
-      <%= render 'shared/nav' if current_user.present? %>
-      <!----crumbord partial render here --->
-      <div id="content-wrapper">
-         <!---crumboard--->
-        <%= render 'shared/crumboard' if current_user.present? %>
-        <%= yield :form_errors %>
-        <div class="container"><%= yield %>
-        <% if current_user.present? %>
-        <!-- Sticky Footer -->
-        <%= render 'shared/footer' %>
-        <%end%>
-        <!-- /.content-wrapper -->
-      </div>
+    <% if current_user.present? %>
+      <%= render 'shared/notice' %>
+      <%= render 'shared/topnav' %>
+      <div id="wrapper">
+        <!-- Sidebar -->
+        <%= render 'shared/nav' %>
+        <!----crumbord partial render here --->
+        <div id="content-wrapper">
+           <!---crumboard--->
+          <%= render 'shared/crumboard'%>
+          <%= yield :form_errors %>
+          <div class="container"><%= yield %>
+          <!-- Sticky Footer -->
+          <%= render 'shared/footer' %>
+          <!-- /.content-wrapper -->
+        </div>
     <!-- /#wrapper -->
+    <%end%>
   </body>
 </html>

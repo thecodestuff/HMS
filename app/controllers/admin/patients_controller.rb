@@ -3,7 +3,6 @@
 module Admin
   # Handle patients operation
   class PatientsController < ApplicationController
-    after_action :update_ward_status, only: %i[create destroy update]
 
     def new
       @patient = Patient.new
@@ -19,7 +18,11 @@ module Admin
     end
 
     def patients
-      @patients = Patient.page(params[:page]).per(5)
+      #@patients = Patient.all.page(params[:page]).per(1)
+      @patients = Patient.joins('INNER JOIN ward_occupancy_details w ON patients.ward_occupancy_detail_id = w.id')
+                         .joins('INNER JOIN users u ON u.id = patients.user_id')
+                         .select('patients.*,u.firstname, w.ward_name')
+                         .page(params[:page]).per(5)
     end
 
     def update
@@ -32,8 +35,10 @@ module Admin
     end
 
     def destroy
+      # byebug
+      patient = Patient.find(params[:id])
       respond_to do |format|
-        format.js if Patient.destroy(params[:id])
+        format.js if patient.destroy
       end
     end
 
@@ -46,7 +51,7 @@ module Admin
 
     private
 
-    def patient_paramsupdate_ward_status
+    def patient_params
       params.require(:patient).permit(
         :id,
         :user_id,
@@ -54,14 +59,16 @@ module Admin
         :ward_assigned,
         :admit_date,
         :discharge_on,
-        :status
+        :status,
+        :ward_occupancy_detail_id
       )
     end
 
     def update_ward_status
-      if params[:id].present?
-        ward = WardOccupancyDetail.where(ward_name: Patient.find(params[:id]).ward_assigned)
-        ward.first.update(status: flag)
+      if params[:user_id].present?
+        byebug
+        ward = WardOccupancyDetail.where(ward_name: Patient.find(params[:user_id]).ward_assigned)
+        ward.first.update(status: :foo)
       end
     end
   end

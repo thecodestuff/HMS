@@ -1,0 +1,24 @@
+\d
+\
+\dt
+\d patients
+\dt
+\d users
+\d appointments
+\dt WardOccupancyDetails
+\d
+\dt Ward_occupancy_details
+\d Ward_occupancy_details
+\d
+\dt active_storage_attachments 
+\d active_storage_attachments 
+Patient.patient_types
+\q
+\d
+SELECT * FROM patients
+;
+UPDATE patients SET ward_occupancy_detail_id=63
+;
+\dt patients
+\d patients
+\s patients
