@@ -2,7 +2,7 @@
 
 module Admin
   # Appointment actions
-  class AppointmentsController < Admin::AdminController
+  class AppointmentsController < ApplicationController
     def index
       @appointment = Appointment.new
       @appointments = paginate(fetch_records)

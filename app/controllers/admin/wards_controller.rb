@@ -2,7 +2,7 @@
 
 module Admin
   # Handles ward operation and status
-  class WardsController < Admin::AdminController
+  class WardsController < ApplicationController
     def index
       @wards = WardOccupancyDetail.order('created_at DESC').page(params[:page])
       @ward = WardOccupancyDetail.new

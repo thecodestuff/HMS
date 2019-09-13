@@ -6,6 +6,7 @@ class Patient < ApplicationRecord
   before_update :dump_discharge_date
 
   belongs_to :user
+  belongs_to :WardOccupancyDetail
   has_many :appointments, dependent: :destroy
   has_many :physicians, through: :appointments
 

@@ -2,7 +2,7 @@
 
 module Admin
   # Hanlde user action like creating,emailing,editing users
-  class UsersController < Admin::AdminController
+  class UsersController < ApplicationController
     before_action :find_user, only: %i[update edit]
     before_action :paginate_user, only: %i[index]
     before_action :paginate_admin_user, only: %i[index]

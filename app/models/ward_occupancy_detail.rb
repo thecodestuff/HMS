@@ -1,4 +1,6 @@
 class WardOccupancyDetail < ApplicationRecord
+  has_one :patient
+  
   enum status: %i[EMPTY not_empty]
   enum ward_type: %i[GEN DEX GOLD]
 
