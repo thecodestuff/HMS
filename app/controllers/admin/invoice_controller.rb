@@ -20,6 +20,16 @@ module Admin
       redirect_to admin_manage_patient_path
     end
 
+    def show
+      respond_to do |format|
+        format.html { render :show}
+        format.pdf do
+          render :pdf=> 'invoice.pdf',
+                 :template=> 'admin/invoice/show.html.erb'
+        end 
+      end
+    end
+
     def update_status
       @patient_invoice.update(status: :paid) if @patient_invoice.status != 'paid'
       respond_to do |format|
