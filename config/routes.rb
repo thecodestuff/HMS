@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :patients, only: %i[new create destroy update]
     resources :appointments, only: %i[index new create destroy update]
     resources :wards, only: %i[index create destroy update]
-    get 'discharge', to: 'patients#patients'
+    get 'manage/patient', to: 'patients#patients'
     get 'payment/:id', to: 'patients#billing', as: 'payment'
   end
 end

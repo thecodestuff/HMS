@@ -13,7 +13,7 @@ module Admin
       respond_to do |format|
         message = 'Patient already admitted' unless @patient.save
         message = 'Patient admitted'
-        format.html { redirect admin_discharge_path, message }
+        format.html { redirect admin_manage_patient_path, message }
       end
     end
 

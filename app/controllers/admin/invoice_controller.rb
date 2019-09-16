@@ -2,5 +2,6 @@
 
 module Admin
   class InvoiceController < ApplicationController
+    
   end
 end
