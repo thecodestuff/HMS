@@ -91,3 +91,5 @@ gem 'mail'
 gem 'kaminari'
 #gem 'kaminari-bootstrap'
 gem 'bootstrap4-kaminari-views'
+# pdf kit for genrating pdf invoices
+gem 'pdfkit', '~> 0.8.4.1'

@@ -10,7 +10,7 @@
     <%= link_to name, admin_patient_path(patient),method: 'patch',remote:true, class:'btn btn-success', id:'update_status' unless patient.status == 'discharged' %>
     <%= link_to 'Delete', admin_patient_path(patient),method: 'delete',remote:true, class:'btn btn-danger', id:'delete_row' %>
     <a href="#" class="btn btn-warning">admit</a>
-    <%= link_to 'Billing', admin_payment_path(patient), class:'btn btn-info' %>
+    <%= link_to 'Billing', admin_invoice_path(patient), class:'btn btn-info' %>
   </td>
   </tr>
 

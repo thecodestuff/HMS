@@ -1,0 +1,13 @@
+<div class="row">
+<div class="col-sm-10"><h1>Invoice management</h1></div>
+<div class="col-sm-2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup">Add Patient</a></div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'table' %>
+    <div class="paginationbox">
+      <%= paginate @invoices, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

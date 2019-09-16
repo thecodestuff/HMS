@@ -9,6 +9,7 @@ class Patient < ApplicationRecord
 
   belongs_to :user
   belongs_to :ward_occupancy_detail
+  has_one :invoice, dependent: :destroy
   has_many :appointments, dependent: :destroy
   has_many :physicians, through: :appointments
 

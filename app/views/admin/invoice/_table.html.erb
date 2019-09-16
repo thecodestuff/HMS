@@ -1,0 +1,15 @@
+<table class="table table-bordered" id="patients">
+  <tr>
+    <th>Id</th>
+    <th>Patient Name</th>
+    <th>Transaction ID</th>
+    <th>Status</th>
+    <th>Total Amount</th>
+    <th>Action</th>
+  </tr>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <%= render 'row', invoice: invoice  %>
+    <%end%>
+  </tbody>
+</table>
