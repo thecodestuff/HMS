@@ -23,9 +23,6 @@ class Patient < ApplicationRecord
   end
 
   def update_ward_status
-      #byebug
-      # ward = WardOccupancyDetail.where(ward_name: Patient.find(params[:user_id]).ward_assigned)
-      # ward.first.update(status: :foo)
       self.ward_occupancy_detail.update(status: 'not_empty') if self.status == 'admit'
       self.ward_occupancy_detail.update(status: 'empty') if self.status == 'discharged'
   end

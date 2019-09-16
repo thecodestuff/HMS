@@ -3,7 +3,6 @@
 module Admin
   # Handle patients operation
   class PatientsController < ApplicationController
-
     def new
       @patient = Patient.new
     end
@@ -13,12 +12,12 @@ module Admin
       respond_to do |format|
         message = 'Patient already admitted' unless @patient.save
         message = 'Patient admitted'
-        format.html { redirect new_admin_patient_path, message }
+        format.html { redirect admin_discharge_path, message }
       end
     end
 
     def patients
-      #@patients = Patient.all.page(params[:page]).per(1)
+      @patient = Patient.new
       @patients = Patient.joins('INNER JOIN ward_occupancy_details w ON patients.ward_occupancy_detail_id = w.id')
                          .joins('INNER JOIN users u ON u.id = patients.user_id')
                          .select('patients.*,u.firstname, w.ward_name')
@@ -35,7 +34,6 @@ module Admin
     end
 
     def destroy
-      # byebug
       patient = Patient.find(params[:id])
       respond_to do |format|
         format.js if patient.destroy
@@ -66,7 +64,6 @@ module Admin
 
     def update_ward_status
       if params[:user_id].present?
-        byebug
         ward = WardOccupancyDetail.where(ward_name: Patient.find(params[:user_id]).ward_assigned)
         ward.first.update(status: :foo)
       end
