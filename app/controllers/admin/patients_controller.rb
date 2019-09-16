@@ -3,6 +3,7 @@
 module Admin
   # Handle patients operation
   class PatientsController < ApplicationController
+    before_action :find_patient, only: %i[update destroy billing]
     def new
       @patient = Patient.new
     end
@@ -25,7 +26,6 @@ module Admin
     end
 
     def update
-      @patient = Patient.find(params[:id])
       respond_to do |format|
         @patient.update(status: 'discharged') if @patient.status != 'discharged'
         format.html { redirect admin_discharge_path, 'patient dischared success' }
@@ -34,16 +34,14 @@ module Admin
     end
 
     def destroy
-      patient = Patient.find(params[:id])
       respond_to do |format|
-        format.js if patient.destroy
+        format.js if @patient.destroy
       end
     end
 
     def billing
-      patient = Patient.find(params[:id]) if params[:id].present?
-      no_of_appointments = patient.appointments.count
-      no_of_day_in_ward = patient.dischagre_on.day - patient.admit_date.day
+      no_of_appointments = @patient.appointments.count
+      no_of_day_in_ward = @patient.dischagre_on.day - @patient.admit_date.day
       render html: "#Number of appointmetns = #{no_of_appointments}*RATE + #{no_of_day_in_ward}*RATES = Bill amount"
     end
 
@@ -62,11 +60,8 @@ module Admin
       )
     end
 
-    def update_ward_status
-      if params[:user_id].present?
-        ward = WardOccupancyDetail.where(ward_name: Patient.find(params[:user_id]).ward_assigned)
-        ward.first.update(status: :foo)
-      end
+    def find_patient
+      @patient = Patient.find(params[:id]) if params[:id].present?
     end
   end
 end

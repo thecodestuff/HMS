@@ -2,9 +2,9 @@
 	<td><%= ward.id %></td>
 	<td><%= ward.ward_name.humanize%></td>
 	<td><%= ward.ward_type%></td>
-	<td><%= ward.status %></td> 
+	<td><%= ward.status.humanize.titleize %></td> 
 	<td>
-	  <%= link_to ward.status, admin_ward_path(ward), remote: true, method: 'put', class: 'btn btn-warning update_row'%>
+	  <%= link_to ward.status.humanize.titleize, admin_ward_path(ward), remote: true, method: 'put', class: 'btn btn-warning update_row'%>
 	  <%= link_to 'Delete', admin_ward_path(ward), method: :delete, remote: true, class: 'btn btn-danger delete_row'%>
 	</td>          
 </tr>
