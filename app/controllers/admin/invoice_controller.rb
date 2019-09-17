@@ -14,6 +14,7 @@ module Admin
       patient = Patient.find(params[:id])
       amount = calculate_bill patient
       @invoice.patient = patient
+      @invoice.transactionId = SecureRandom.hex(10)
       @invoice.amount = amount
       flash[:notice] = 'failed to create invoice' unless @invoice.save
       flash[:notice] = 'invoice created success'
@@ -39,10 +40,19 @@ module Admin
 
     private
 
+    def invoice_params
+      params.require(:invoice).permit(
+        :id,
+        :patient_id,
+        :transactionId,
+        :amount,
+        :status
+      )
+    end
+
     def calculate_bill(patient)
-      no_of_appointments = patient.appointments.count.to_i
-      no_of_day_in_ward = patient.dischagre_on.day - patient.admit_date.day
-      total = no_of_day_in_ward.to_i * 100 + no_of_appointments * 200
+      @total ||= (patient.dischagre_on.day - patient.admit_date.day) * 100
+      + patient.appointments.count * 200
     end
 
     def invoice
