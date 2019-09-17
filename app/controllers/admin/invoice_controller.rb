@@ -22,11 +22,11 @@ module Admin
 
     def show
       respond_to do |format|
-        format.html { render :show}
+        format.html { render :show }
         format.pdf do
-          render :pdf=> 'invoice.pdf',
-                 :template=> 'admin/invoice/show.html.erb'
-        end 
+          render pdf: 'invoice.pdf',
+                 template: 'admin/invoice/show.html.erb'
+        end
       end
     end
 

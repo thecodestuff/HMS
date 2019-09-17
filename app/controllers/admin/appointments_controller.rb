@@ -3,16 +3,13 @@
 module Admin
   # Appointment actions
   class AppointmentsController < ApplicationController
+    before_action :new_user
+
     def index
-      @appointment = Appointment.new
       @appointments = paginate(fetch_records)
       respond_to do |format|
         format.html { @appointments }
       end
-    end
-
-    def new
-      @appointment = Appointment.new
     end
 
     def create
@@ -59,6 +56,10 @@ module Admin
     def paginate(appointments)
       @paginate_appointments = Kaminari.paginate_array(appointments)
                                        .page(params[:page]).per(4)
+    end
+
+    def new_user
+      @appointment = Appointment.new
     end
   end
 end

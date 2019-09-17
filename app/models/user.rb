@@ -17,7 +17,7 @@ class User < ApplicationRecord
   scope :is_nurse,     -> { where(role: :Nurse) }
   scope :is_physician, -> { where(role: :Physician) }
   scope :is_patients,  -> { where(role: :Patient) }
-  scope :by_role,  -> { where(role: role) }
+  scope :by_role, -> { where(role: role) }
 
   def humanize_name
     self.firstname = self.firstname.humanize
