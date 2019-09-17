@@ -1,20 +1,16 @@
 <div class="form-group">
   <%= f.label :user_id %>
-  <%= f.collection_select(:user_id, User.is_patients, :id, :firstname) %>
+  <%= f.collection_select(:user_id, User.is_patients, :id, :firstname, include_blank: 'Choose Patient') %>
 </div>
 
 <div class="form-group">
   <%= f.label :patient_type %>
-  <%= f.select(:patient_type) do %>
-    <% Patient.patient_types.each do |c| %>
-      <%= content_tag(:option , c.first.to_s.humanize , value: c.first.to_s) %>      
-    <% end %>
-  <% end %>
+  <%= f.select :patient_type, options_for_select(Patient.patient_types.collect{ |key,value| [key.humanize,key]}), class: 'form-control', include_blank: 'Choose Patient Type', class:'ffoo' %>
 </div>
 
 <div class="form-group">
   <%= f.label :ward_assigned %>
-<%= f.collection_select(:ward_occupancy_detail_id, WardOccupancyDetail.empty, :id, :ward_name) %></div>
+<%= f.collection_select(:ward_occupancy_detail_id, WardOccupancyDetail.empty, :id, :ward_name, include_blank: 'Assigne Ward') %></div>
 
 <div class="form-group">
   <%= f.label :status %>

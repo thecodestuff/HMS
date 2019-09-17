@@ -7,8 +7,6 @@
   <td>
     <a href="<%= admin_invoice_status_path(invoice) %>" class="btn btn-warning">Done</a>
     <a href="<%= admin_invoice_path invoice %>" class="btn btn-primary">Reciept</a>
-    <a href="#" class="btn btn-success">Download</a>
-    <a href="#" class="btn btn-warning">Print</a>
-    <%= link_to 'Create PDF document', admin_invoice_path(invoice, :format => :pdf) %>
+    <a href="<%= admin_invoice_path(invoice, :format => :pdf) %>" class="btn btn-success" target="blank">Download</a>
   </td>
 </tr>

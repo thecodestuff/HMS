@@ -6,57 +6,87 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>PDF recipet</title>
   <style type="text/css">
-  .invoice{
-    width:500px;
-    margin:0px auto;
+  .wrapper{
+    border:1px solid black;
+    background-color:lightgrey;
   }
-  .heading{
-    width:300px;
-    margin:0px auto;
-  }
-  .content p{
-    margin:0px auto;
-  }
+
+.Row{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+.Column
+{
+    display: table-cell;
+    #background-color: red; /*Optional*/
+}
+
+ul{
+  list-style:none;
+}
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="heading"><h1>Invoice</h1></div>
-    <hr/>
-    <div class="content">
-       <table class="invoice">
-         <tr>
-           <td>Item</td>
-           <td>price</td>
-           <td>total price</td>
-         </tr>
-         <tr>
-           <td>wine</td>
-           <td>200</td>
-           <td>225</td>
-         </tr>
-
-         <tr>
-           <td>wine</td>
-           <td>200</td>
-           <td>225</td>
-         </tr>
-
-         <tr>
-           <td>wine</td>
-           <td>200</td>
-           <td>225</td>
-         </tr>
-
-         <tr>
-           <td>wine</td>
-           <td>200</td>
-           <td>225</td>
-         </tr>
-       </table>
-       <hr/>
-       <h2>Total ammount : 2000INR</h3>
+<div class="wrapper">
+  <div class="Row">
+    <div class="Column"><h2>SMS Hospital</h2></div>
+    <div class="Column"><h1>Invoice</h1></div>
+    <div class="Column "><em>302-mountain view street</em><p>Jaipur -20302</p><p>Rajasthan,IN</p></div>
+  </div>
+  <hr/>
+  <div class="Row">
+    <div class="Column">
+      <ul>
+        <li><b>Transaction ID :</b> <%=@patient_invoice.transactionId%></li>
+        <li><b>Patient Name :</b> <%= @patient_invoice.patient_id %></li>
+        <li><b>Phone :</b> 8734874578</li>
+        <li><b>Email :</b> xxxxx@gmail.com</li>
+        <li><b>Address :</b> 110,downtown,china town,china</li>
+      </ul>
+    </div>
+    <div class="Column">
+      <ul>
+        <li><b>Bill Date :</b> <%=format_date(@patient_invoice.bill_date)%></li>
+        <li><b>Admit On  :</b> <%=format_date(@patient_invoice.admit_on)%></li>
+        <li><b>Discharged:</b> <%=format_date(@patient_invoice.discharged)%></li>
+      </ul>
     </div>
   </div>
+  <hr/>
+  <div class="Row">
+    <div class="Column">Id</div>
+    <div class="Column">Particulars</div>
+    <div class="Column">QTY</div>
+    <div class="Column">RATE</div>
+    <div class="Column">Amount</div>
+  </div>
+  <hr/>
+  <div class="Row">
+    <div class="Column">1</div>
+    <div class="Column">No of days in ward</div>
+    <div class="Column"><%= @patient_invoice.days %></div>
+    <div class="Column">100</div>
+    <div class="Column"><%= @patient_invoice.days*100 %> &#8377;</div>
+  </div>
+
+  <div class="Row">
+    <div class="Column">2</div>
+    <div class="Column">No of Appointments</div>
+    <div class="Column"><%= @patient_invoice.appointments %></div>
+    <div class="Column">150</div>
+    <div class="Column"><%= @patient_invoice.appointments*150 %> &#8377;</div>
+  </div>
+  <hr/>
+  <div class="Row">
+    <div class="Column"></div>
+    <div class="Column"></div>
+    <div class="Column"></div>
+    <div class="Column">Total Amount :</div>
+    <div class="Column"><%= @patient_invoice.amount %> &#8377;</div>
+  </div>
+
+</div>
 </body>
 </html>
