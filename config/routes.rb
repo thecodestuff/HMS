@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     get 'patient/invoice/update/:id', to: 'invoice#update_status', as: :invoice_status
     get 'manage/patient', to: 'patients#patients'
     get 'payment/:id', to: 'patients#billing', as: 'payment'
+    get 'manage/patient/:id', to: 'patients#update_discharge_date', as: :update_date
   end
 end

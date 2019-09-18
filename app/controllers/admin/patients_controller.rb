@@ -3,7 +3,9 @@
 module Admin
   # Handle patients operation
   class PatientsController < ApplicationController
-    before_action :find_patient, only: %i[update destroy billing]
+    before_action :find_patient, only: %i[update destroy billing update_discharge_date]
+    before_action :check_billing_status, only: %i[update]
+
     def new
       @patient = Patient.new
     end
@@ -28,7 +30,7 @@ module Admin
     def update
       respond_to do |format|
         @patient.update(status: 'discharged') if @patient.status != 'discharged'
-        format.html { redirect admin_discharge_path, 'patient dischared success' }
+        format.html { redirect admin_manage_patient_path, 'patient dischared success' }
         format.js
       end
     end
@@ -39,10 +41,12 @@ module Admin
       end
     end
 
-    def billing
-      no_of_appointments = @patient.appointments.count
-      no_of_day_in_ward = @patient.dischagre_on.day - @patient.admit_date.day
-      render html: "#Number of appointmetns = #{no_of_appointments}*RATE + #{no_of_day_in_ward}*RATES = Bill amount"
+    def update_discharge_date
+      @patient.update(dischagre_on: Date.current) if @patient.dischagre_on.nil?
+      respond_to do |format|
+        format.html { redirect admin_manage_patient_path, 'Patient checkout' }
+        format.js
+      end
     end
 
     private
@@ -62,6 +66,10 @@ module Admin
 
     def find_patient
       @patient = Patient.find(params[:id]) if params[:id].present?
+    end
+
+    def check_billing_status
+      redirect admin_manage_patient_path, 'Patient Not Billed Yet' unless @patient.invoice.present? & @patient.invoice.paid?
     end
   end
 end
