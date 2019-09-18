@@ -15,6 +15,8 @@ class Patient < ApplicationRecord
 
   validates_uniqueness_of :user_id
 
+  scope :not_admit, -> { includes(:user).map { |patient| [patient.user.firstname, patient.user.id]} }
+
   def dump_admit_date
     self.admit_date = Date.current unless self.admit_date.present?
   end

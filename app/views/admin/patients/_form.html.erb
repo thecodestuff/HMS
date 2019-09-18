@@ -1,6 +1,6 @@
 <div class="form-group">
   <%= f.label :user_id %>
-  <%= f.collection_select(:user_id, User.is_patients, :id, :firstname, include_blank: 'Choose Patient') %>
+  <%= f.select :user_id, options_for_select(User.is_admit), include_blank: 'Choose Patient' %>
 </div>
 
 <div class="form-group">

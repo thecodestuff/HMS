@@ -18,6 +18,8 @@ class User < ApplicationRecord
   scope :is_physician, -> { where(role: :Physician) }
   scope :is_patients,  -> { where(role: :Patient) }
   scope :by_role, -> { where(role: role) }
+  scope :is_admit, -> { includes(:patient).where(role:'Patient').map{|user| [user.firstname, user.id ] }
+}
 
   def humanize_name
     self.firstname = self.firstname.humanize
