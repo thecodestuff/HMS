@@ -1,12 +1,12 @@
 
 <div class="form-group">
   <%= f.label :physician_id %>
-  <%= f.select(:physician_id, options_for_select(get_physician_names)) %>
+  <%= f.select(:physician_id, options_for_select(get_physician_names), include_blank: 'Choose Physician') %>
 </div>
 
 <div class="form-group">
   <%= f.label :patient_id %>
-  <%= f.select(:patient_id, options_for_select(get_patient_names)) %>
+  <%= f.select(:patient_id, options_for_select(get_patient_names), include_blank: 'Choose Patient' ) %>
 </div>
 
 <div class="form-group">
