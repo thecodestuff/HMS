@@ -1,86 +1,82 @@
 
   <div class="form-group">
-      <%= f.label :firstname %>
-      <%= f.text_field :firstname['firstname'], class:"form-control" %>    
+    <%= f.label :firstname %>
+    <%= f.text_field :firstname['firstname'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :lastname %>
-      <%= f.text_field :lastname['lastname'], class:"form-control" %>    
+    <%= f.label :lastname %>
+    <%= f.text_field :lastname['lastname'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :civil_id %>
-      <%= f.text_field :civil_id['civil_id'], class:"form-control" %>    
+    <%= f.label :civil_id %>
+    <%= f.text_field :civil_id['civil_id'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :email %>
-      <%= f.text_field :email['email'], class:"form-control" %>    
+    <%= f.label :email %>
+    <%= f.text_field :email['email'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class:"form-control" %>    
+    <%= f.label :password %>
+    <%= f.password_field :password, class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :department %>
-      <%= f.text_field :department['department'], class:"form-control" %>    
+    <%= f.label :department %>
+    <%= f.text_field :department['department'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :phone %>
-      <%= f.text_field :phone['phone'], class:"form-control" %>    
+    <%= f.label :phone %>
+    <%= f.text_field :phone['phone'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :blood_group %>
-      <%= f.text_field :blood_group['blood_group'], class:"form-control" %>    
+    <%= f.label :blood_group %>
+    <%= f.text_field :blood_group['blood_group'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :age %>
-      <%= f.text_field :age['age'], class:"form-control" %>    
+    <%= f.label :age %>
+    <%= f.text_field :age['age'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :house_no %>
-      <%= f.text_field :house_no['house_no'], class:"form-control" %>    
+    <%= f.label :house_no %>
+    <%= f.text_field :house_no['house_no'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :street %>
-      <%= f.text_field :locality['locality'], class:"form-control" %>    
+    <%= f.label :street %>
+    <%= f.text_field :locality['locality'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :city %>
-      <%= f.text_field :city['city'], class:"form-control" %>    
+    <%= f.label :city %>
+    <%= f.text_field :city['city'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :pincode %>
-      <%= f.text_field :pincode['pincode'], class:"form-control" %>    
+    <%= f.label :pincode %>
+    <%= f.text_field :pincode['pincode'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :country %>
-      <%= f.text_field :country['country'], class:"form-control" %>    
+    <%= f.label :country %>
+    <%= f.text_field :country['country'], class:"form-control" %>    
   </div>
 
   <div class="form-group">
-      <%= f.label :role %>
-      <%= f.select(:role) do %>
-        <% User.roles.each do |c| %>
-        <%= content_tag(:option , c.first.humanize , value: c.first ) %>      
-        <% end %>
-      <% end %>
+    <%= f.label :role %>
+    <%= f.select :role, options_for_select(User.roles.map{|k,v| [k,k]}), include_blank: 'Choose role' %>
   </div>
 
   <div class="form-group">
-      <%= f.label :avatar %>
-      <%= f.file_field :avatar, class:"form-control-file" %>    
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar, class:"form-control-file" %>    
   </div>
 
   <div class="form-group">
