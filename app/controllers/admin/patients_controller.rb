@@ -69,7 +69,9 @@ module Admin
     end
 
     def check_billing_status
-      redirect admin_manage_patient_path, 'Patient Not Billed Yet' unless @patient.invoice.present? & @patient.invoice.paid?
+      unless @patient.invoice.present? & @patient.invoice.paid?
+        redirect admin_manage_patient_path, 'Patient Not Billed Yet'
+      end
     end
   end
 end

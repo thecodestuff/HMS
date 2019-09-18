@@ -21,7 +21,7 @@ module Admin
     end
 
     def destroy
-      return redirect admin_wards_path,'ward is not empty' if @ward.empty?
+      redirect admin_wards_path, 'ward is not empty' && return unless @ward.empty?
       @ward.destroy
       respond_to do |format|
         format.html { redirect admin_wards_path, 'deleted success' }

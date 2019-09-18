@@ -52,14 +52,14 @@ module Admin
     def invoice
       patient = Patient.find(params[:id])
       @invoice = patient.create_invoice(
-           amount: calculate_bill( patient ),
-    transactionId: SecureRandom.hex(10),
-        bill_date: Date.current,
-         admit_on: patient.admit_date,
-       discharged: patient.dischagre_on,
-             days: patient.dischagre_on.day - patient.admit_date.day,
-     appointments: patient.appointments.count
-         )
+                  amount: calculate_bill(patient),
+                  transactionId: SecureRandom.hex(10),
+                  bill_date: Date.current,
+                  admit_on: patient.admit_date,
+                  discharged: patient.dischagre_on,
+                  days: patient.dischagre_on.day - patient.admit_date.day,
+                  appointments: patient.appointments.count
+                )
     end
 
     def find_invoice
