@@ -6,13 +6,13 @@
 
 <div class="form-group">
   <%= f.label :ward_type %>
-  <%= f.select :status, options_for_select(WardOccupancyDetail.ward_types.collect{ |k,v| [k,k]}), class: 'form-control',  prompt: "choose ward type" %>
+  <%= f.select :ward_type, options_for_select(WardOccupancyDetail.ward_types.collect{ |k,v| [k,k]}), class: 'form-control',  include_blank: "choose ward type" %>
 </div>
 
 <div class="form-group">
   <%= f.label :status %>
   <!--%= f.text_field :status, class:"form-control" %-->    
-  <%= f.select :status, options_for_select(WardOccupancyDetail.statuses.collect{ |k,v| [k,k]}), class: 'form-control',  prompt: "choose status" %>
+  <%= f.select :status, options_for_select(WardOccupancyDetail.statuses.collect{ |k,v| [k,k]}), class: 'form-control',  include_blank: "choose status" %>
 </div>
 
 <div class="form-group">

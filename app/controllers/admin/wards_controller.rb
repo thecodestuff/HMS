@@ -4,6 +4,8 @@ module Admin
   # Handles ward operation and status
   class WardsController < ApplicationController
     after_action :empty_ward, only: [:update]
+    before_action :find_ward, only: %i[destroy update]
+
     def index
       @wards = WardOccupancyDetail.order('created_at DESC').page(params[:page])
       @ward = WardOccupancyDetail.new
@@ -17,17 +19,17 @@ module Admin
         format.js
       end
     end
+
     def destroy
+      return redirect admin_wards_path,'ward is not empty' if @ward.empty?
+      @ward.destroy
       respond_to do |format|
-        if WardOccupancyDetail.delete(params[:id])
-          format.html { redirect admin_wards_path, 'deleted success' }
-          format.js
-        end
+        format.html { redirect admin_wards_path, 'deleted success' }
+        format.js
       end
     end
 
     def update
-      @ward = WardOccupancyDetail.find(params[:id])
       respond_to do |format|
         @ward.update(status: 'EMPTY') if @ward.status == 'NOTEMPTY'
         format.html { redirect_to admin_wards_path }
@@ -45,6 +47,10 @@ module Admin
 
     def redirect(path, message)
       redirect_to path, notice: message
+    end
+
+    def find_ward
+      @ward = WardOccupancyDetail.find(params[:id]) if params[:id].present?
     end
 
     def empty_ward
