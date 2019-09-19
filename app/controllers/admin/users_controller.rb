@@ -67,19 +67,19 @@ module Admin
     end
 
     def paginate_admin_user
-      @admins = @users.is_admin.page(params[:admin_tab]).per(1)
+      @admins = @users.is_admin.page(params[:admin_tab]).per(5)
     end
 
     def paginate_physician_user
-      @physicians = @users.is_physician.page(params[:physician_tab]).per(1)
+      @physicians = @users.is_physician.page(params[:physician_tab]).per(5)
     end
 
     def paginate_patient_user
-      @patients = @users.is_patients.page(params[:admin_tab]).per(2)
+      @patients = @users.is_patients.page(params[:admin_tab]).per(5)
     end
 
     def paginate_nurse_user
-      @nurses = @users.is_nurse.page(params[:nurse_tab]).per(1)
+      @nurses = @users.is_nurse.page(params[:nurse_tab]).per(5)
     end
   end
 end

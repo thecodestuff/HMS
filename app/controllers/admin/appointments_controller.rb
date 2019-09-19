@@ -39,7 +39,9 @@ module Admin
     private
 
     def appointment_params
-      params.require(:appointment).permit(:patient_id, :physician_id, :appointment_date, :status)
+      params.require(:appointment).permit(
+          :patient_id, :physician_id, :appointment_date, :status
+       )
     end
 
     def fetch_records
