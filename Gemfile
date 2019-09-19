@@ -94,3 +94,7 @@ gem 'bootstrap4-kaminari-views'
 # pdf kit for genrating pdf invoices
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+# kill N+1 queries 
+gem 'bullet', '~> 6.0', '>= 6.0.2'
+# dependency for bullet
+gem 'uniform_notifier', '~> 1.12', '>= 1.12.1'

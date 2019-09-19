@@ -63,7 +63,7 @@ module Admin
     end
 
     def paginate_user
-      @users = User.page(params[:page])
+      @users = User.page(params[:page]).includes(:avatar_attachment)
     end
 
     def paginate_admin_user

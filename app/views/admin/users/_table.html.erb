@@ -27,13 +27,13 @@
              <td><%= user.department%></td>
              <td>
                <% if user.role =='admin' %>
-                      <i class="fa fa-ambulance"></i>
-                  <% elsif user.role == 'doctor' %>
-                      <i class="fa fa-user-md"></i>                  
-                   <% elsif user.role == 'nurse' %>
-                   <i class="fa fa-user"></i>
-                   <% else %>
-                   <i class="fa fa-user"></i>
+                  <i class="fa fa-ambulance"></i>
+              <% elsif user.role == 'doctor' %>
+                  <i class="fa fa-user-md"></i>                  
+              <% elsif user.role == 'nurse' %>
+                  <i class="fa fa-user"></i>
+              <% else %>
+                  <i class="fa fa-user"></i>
                <% end %>
              </td>
              <td>
