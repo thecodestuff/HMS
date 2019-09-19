@@ -11,9 +11,10 @@ module Admin
     end
 
     def create
-      flash[:notice] = 'failed to create invoice' unless @invoice.save
+      message = 'Invoice created success'
+      message = 'failed to create invoice, checkout first' unless @invoice.save
       flash[:notice] = 'invoice created success'
-      redirect_to admin_manage_patient_path
+      redirect admin_manage_patient_path, message
     end
 
     def show
@@ -51,7 +52,8 @@ module Admin
 
     def invoice
       patient = Patient.find(params[:id])
-      @invoice = patient.create_invoice(
+      begin
+        @invoice = patient.create_invoice(
                   amount: calculate_bill(patient),
                   transactionId: SecureRandom.hex(10),
                   bill_date: Date.current,
@@ -60,6 +62,10 @@ module Admin
                   days: patient.dischagre_on.day - patient.admit_date.day,
                   appointments: patient.appointments.count
                 )
+      rescue StandardError => e
+        @invoice = Invoice.new
+        @invoice.errors.add(:base, e)
+      end
     end
 
     def find_invoice

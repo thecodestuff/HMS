@@ -28,9 +28,10 @@ module Admin
     end
 
     def update
+      message = "Bill not paid, first pay then go"
       respond_to do |format|
-        @patient.update(status: 'discharged') if @patient.status != 'discharged'
-        format.html { redirect admin_manage_patient_path, 'patient dischared success' }
+        @patient.update(status: 'discharged') and message = "patient discharged" if @patient.status != 'discharged' && @patient.invoice.paid?
+        format.html { redirect admin_manage_patient_path, message }
         format.js
       end
     end
@@ -69,8 +70,10 @@ module Admin
     end
 
     def check_billing_status
-      unless @patient.invoice.present? & @patient.invoice.paid?
-        redirect admin_manage_patient_path, 'Patient Not Billed Yet'
+      if @patient.invoice.present?
+        message ||= 'Patient Billing dues' if @patient.invoice.pending?
+      else
+        redirect admin_manage_patient_path, message.present? ? message : 'Patient not billed yet'
       end
     end
   end
