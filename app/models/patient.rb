@@ -24,7 +24,7 @@ class Patient < ApplicationRecord
   end
 
   def update_ward_status
-    self.ward_occupancy_detail.update(status: 'not_empty') if self.status == 'admit'
-    self.ward_occupancy_detail.update(status: 'empty') if self.status == 'discharged'
+    ward_occupancy_detail.update(status: 'not_empty') if status == 'admit'
+    ward_occupancy_detail.update(status: 'empty') if status == 'discharged'
   end
 end

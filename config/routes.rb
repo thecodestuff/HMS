@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     get 'manage/patient', to: 'patients#patients'
     get 'payment/:id', to: 'patients#billing', as: 'payment'
     get 'manage/patient/:id', to: 'patients#update_discharge_date', as: :update_date
+    get 'get_dataset', to: 'users#get_data'
   end
 end

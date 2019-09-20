@@ -1,6 +1,7 @@
 function emptyWard(){
   $('.update_row').bind('ajax:success',function(){
-    $(this).html("EMPTY")
+    $(this).html("EMPTY");
+    $(".status").html("foo");
   });
 }
 

@@ -14,6 +14,7 @@ class Appointment < ApplicationRecord
   scope :current_user, ->(id) { where(physician_id: id) }
 
   def appointment_date_cannot_be_in_past
-    errors.add(:appointment_date, 'Appointment date cannot be in past') unless appointment_date.day >= Date.current.day
+    condition = appointment_date.day >= Date.current.day
+    errors.add(:appointment_date, 'Appointment date cannot be in past') unless condition
   end
 end

@@ -10,6 +10,15 @@ module Admin
     before_action :paginate_physician_user, only: %i[index]
     before_action :paginate_nurse_user, only: %i[index]
 
+    def index
+      @users = User.all
+      #render json: { data: User.all }
+    end
+
+    def get_data
+      render json: { data: User.all }
+    end
+
     def new
       @user = User.new
     end
