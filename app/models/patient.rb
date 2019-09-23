@@ -5,6 +5,8 @@ class Patient < ApplicationRecord
   enum patient_type: %i[out_patient in_patient emergency]
   enum status: %i[not_admit admit refered discharged checkout]
 
+  validate :status_cannot_be_dischared_on_creating
+
   before_create :dump_admit_date
   after_create :update_ward_status
   after_update :update_ward_status
@@ -20,11 +22,15 @@ class Patient < ApplicationRecord
   scope :not_admit, -> { includes(:user).map { |patient| [patient.user.firstname, patient.user.id]} }
 
   def dump_admit_date
-    self.admit_date = Date.current unless self.admit_date.present?
+    self.admit_date = Date.current unless admit_date.present?
   end
 
   def update_ward_status
     ward_occupancy_detail.update(status: 'not_empty') if status == 'admit'
     ward_occupancy_detail.update(status: 'empty') if status == 'discharged'
+  end
+
+  def status_cannot_be_dischared_on_creating
+    errors.add(:discharg_on, 'Patient not admit') if self.status == 'discharged'
   end
 end

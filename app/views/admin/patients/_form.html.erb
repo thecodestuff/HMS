@@ -14,7 +14,8 @@
 
 <div class="form-group">
   <%= f.label :status %>
-  <%= f.select :status, options_for_select(Patient.statuses.collect{ |key,value| [key.humanize,key]}), class: 'form-control',  prompt: "choose status" %>
+  <%= f.select :status, options_for_select(Patient.statuses.keys.collect{|k| [k.humanize,k] if !["refered", "discharged", "checkout"] .include? k }.compact
+), class: 'form-control',  prompt: "choose status" %>
 </div>
 
 <div class="form-group">
