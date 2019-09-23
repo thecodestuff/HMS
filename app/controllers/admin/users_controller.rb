@@ -5,14 +5,14 @@ module Admin
   class UsersController < ApplicationController
     before_action :find_user, only: %i[update edit]
     before_action :paginate_user, only: %i[index]
-    before_action :paginate_admin_user, only: %i[index]
-    before_action :paginate_patient_user, only: %i[index]
-    before_action :paginate_physician_user, only: %i[index]
-    before_action :paginate_nurse_user, only: %i[index]
+    #before_action :paginate_admin_user, only: %i[index]
+    #before_action :paginate_patient_user, only: %i[index]
+    #before_action :paginate_physician_user, only: %i[index]
+    #before_action :paginate_nurse_user, only: %i[index]
 
     def index
+      #@users = User.page(params[:page])
       @users = User.all
-      #render json: { data: User.all }
     end
 
     def get_data
