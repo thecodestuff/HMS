@@ -40,9 +40,8 @@ ul{
     <div class="Column">
       <ul>
         <li><b>Transaction ID :</b> <%=@patient_invoice.transactionId%></li>
-        <li><b>Patient Name :</b> <%= @patient_invoice.patient_id %></li>
+        <li><b>Patient Name :</b> <%= @patient_invoice.patient.user.firstname %></li>
         <li><b>Phone :</b> 8734874578</li>
-        <li><b>Email :</b> xxxxx@gmail.com</li>
         <li><b>Address :</b> 110,downtown,china town,china</li>
       </ul>
     </div>
@@ -67,8 +66,8 @@ ul{
     <div class="Column">1</div>
     <div class="Column">No of days in ward</div>
     <div class="Column"><%= @patient_invoice.days %></div>
-    <div class="Column">100</div>
-    <div class="Column"><%= @patient_invoice.days*100 %> &#8377;</div>
+    <div class="Column"><%= @patient_invoice.ward_rate%></div>
+    <div class="Column"><%= @patient_invoice.days*@patient_invoice.ward_rate %> &#8377;</div>
   </div>
 
   <div class="Row">

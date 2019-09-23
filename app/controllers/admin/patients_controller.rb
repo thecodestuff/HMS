@@ -3,7 +3,7 @@
 module Admin
   # Handle patients operation
   class PatientsController < ApplicationController
-    before_action :find_patient, only: %i[update destroy billing update_discharge_date]
+    before_action :find_patient, only: %i[update destroy update_discharge_date]
     before_action :check_billing_status, only: %i[update]
 
     def new
@@ -28,14 +28,25 @@ module Admin
     end
 
     def update
-      message = 'Bill not paid yet'
-      respond_to do |format|
-        if @patient.status != 'discharged' && @patient.invoice.paid?
-          @patient.update(status: 'discharged') && message = 'patient discharged'
+      message = ""
+      if !@patient.errors.none?
+        @patient.status = 'discharged'
+        if @patient.save
+          respond_to do |format|
+            format.html {redirect admin_manage_patient_path, 'Patient discharged successfully'}
+          end
         end
-        format.html { redirect admin_manage_patient_path, message }
-        format.js
+      else
+        format.html {redirect admin_manage_patient_path, 'Patient bill not paid'}
       end
+      # byebug
+      # message = 'Patient discharged successfully' if @patient.update(status: 'discharged')
+      # message = @patient.errors.details 
+      # respond_to do |format|
+        
+      #   format.html { redirect admin_manage_patient_path, message }
+      #   format.js
+      # end
     end
 
     def destroy
@@ -73,9 +84,9 @@ module Admin
 
     def check_billing_status
       if @patient.invoice.present?
-        message ||= 'Patient Billing dues' if @patient.invoice.pending?
+        @patient.errors.add(:base, 'Patient Bill not paid yet') if @patient.invoice.pending?
       else
-        redirect admin_manage_patient_path, message.present? ? message : 'Patient not billed yet'
+        @patient.errors.add(:base, 'Patient Bill not generated yet')
       end
     end
   end

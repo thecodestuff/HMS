@@ -42,12 +42,8 @@ module Admin
         :id, :patient_id, :transactionId,
         :amount, :status, :bill_date,
         :admit_on, :discharged, :days,
-        :appointments
+        :appointments,:ward_rate
       )
-    end
-
-    def calculate_bill(patient)
-      total ||= (patient.dischagre_on.day - patient.admit_date.day) * 100 + patient.appointments.count * 200
     end
 
     def invoice
@@ -59,13 +55,27 @@ module Admin
                   bill_date: Date.current,
                   admit_on: patient.admit_date,
                   discharged: patient.dischagre_on,
-                  days: patient.dischagre_on.day - patient.admit_date.day,
-                  appointments: patient.appointments.count
+                  days: calculate_days(patient),
+                  appointments: patient.appointments.count,
+                  ward_rate: ward_rate(patient)
                 )
       rescue StandardError => e
         @invoice = Invoice.new
         @invoice.errors.add(:base, e)
       end
+    end
+
+    def calculate_bill(patient)
+      calculate_days(patient) * ward_rate(patient) + patient.appointments.count * 200
+    end
+
+    def calculate_days(patient)
+      days = patient.dischagre_on.day - patient.admit_date.day
+      return 1 if days.zero?
+    end
+
+    def ward_rate(patient)
+      Invoice.rate[patient.ward_occupancy_detail.ward_type.to_sym]
     end
 
     def find_invoice
