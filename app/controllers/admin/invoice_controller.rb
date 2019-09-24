@@ -7,7 +7,7 @@ module Admin
     before_action :find_invoice, only: %i[update_status show]
 
     def index
-      @invoices = Invoice.page(params[:page]).per(2)
+      @invoices = Invoice.page(params[:page]).per(5)
     end
 
     def create
@@ -56,7 +56,7 @@ module Admin
                   admit_on: patient.admit_date,
                   discharged: patient.dischagre_on,
                   days: calculate_days(patient),
-                  appointments: patient.appointments.count,
+                  appointments: calculate_appointments(patient),
                   ward_rate: ward_rate(patient)
                 )
       rescue StandardError => e
@@ -71,7 +71,11 @@ module Admin
 
     def calculate_days(patient)
       days = patient.dischagre_on.day - patient.admit_date.day
-      return 1 if days.zero?
+      days.zero? && patient.admit? ? 1 : 0
+    end
+
+    def calculate_appointments(patient)
+      patient.appointments.where(status: 'done').count
     end
 
     def ward_rate(patient)

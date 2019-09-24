@@ -28,25 +28,15 @@ module Admin
     end
 
     def update
-      message = ""
-      if !@patient.errors.none?
-        @patient.status = 'discharged'
-        if @patient.save
-          respond_to do |format|
-            format.html {redirect admin_manage_patient_path, 'Patient discharged successfully'}
-          end
-        end
-      else
-        format.html {redirect admin_manage_patient_path, 'Patient bill not paid'}
+      message = @patient.errors[:base][0]
+      if @patient.errors.none?
+        @patient.update(status: 'discharged')
+        message = 'Patient discharged successflly'
       end
-      # byebug
-      # message = 'Patient discharged successfully' if @patient.update(status: 'discharged')
-      # message = @patient.errors.details 
-      # respond_to do |format|
-        
-      #   format.html { redirect admin_manage_patient_path, message }
-      #   format.js
-      # end
+
+      respond_to do |format|
+        format.html { redirect admin_manage_patient_path, message }
+      end
     end
 
     def destroy

@@ -2,10 +2,10 @@
   <td><%= appointment[0] %></td>
   <td><%= appointment[1] %></td>
   <td><%= appointment[2] %></td>
-  <td><%= appointment[4] %></td>
+  <td><%= format_date(appointment[4]) %></td>
   <td><%= appointment[3] %></td> 
   <td>
-  <%= link_to 'cancel', admin_appointment_path(appointment[0]), method: :delete, remote: true, class: "btn btn-danger delete_pony" %>
+  <%= link_to 'cancel', admin_cancel_appointment_path(appointment[0]), class: "btn btn-danger delete_pony" %>
   </td> 
   <% if !current_user.admin? %>
      <td>

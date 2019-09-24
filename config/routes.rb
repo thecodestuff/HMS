@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     get 'payment/:id', to: 'patients#billing', as: 'payment'
     get 'manage/patient/:id', to: 'patients#update_discharge_date', as: :update_date
     get 'get_dataset', to: 'users#get_data'
+    get 'appointments/cancel/:id', to: 'appointments#cancel_appointment', as: :cancel_appointment
   end
 end

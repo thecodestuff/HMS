@@ -17,4 +17,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery.datatables.js
+//= flash.js
 //= require_tree .

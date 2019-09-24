@@ -3,7 +3,9 @@
 module Admin
   # Appointment actions
   class AppointmentsController < ApplicationController
-    before_action :new_user
+    before_action :new_appointment
+    before_action :find_appointment, only: %i[cancel_appointment]
+    before_action :cannot_cancel_appointment_if_done, only: %i[cancel_appointment]
 
     def index
       @appointments = paginate(fetch_records)
@@ -36,6 +38,15 @@ module Admin
       end
     end
 
+    def cancel_appointment
+      message = @appointment.errors.any? ? @appointment.errors[:base][0] : 'Appointment cancelled'
+      @appointment.update(status: 'canceled') unless @appointment.done?
+      respond_to do |format|
+        format.html { redirect admin_appointments_path, message }
+        format.js { destroy.js }
+      end
+    end
+
     private
 
     def appointment_params
@@ -60,8 +71,16 @@ module Admin
                                        .page(params[:page]).per(4)
     end
 
-    def new_user
+    def new_appointment
       @appointment = Appointment.new
+    end
+
+    def find_appointment
+      @appointment = Appointment.find(params[:id])
+    end
+
+    def cannot_cancel_appointment_if_done
+      @appointment.errors[:base] << 'Cannot cancel appointment' if @appointment.done?
     end
   end
 end

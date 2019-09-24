@@ -2,14 +2,14 @@ class Appointment < ApplicationRecord
   belongs_to :physician
   belongs_to :patient
 
-  enum status: %i[pending done]
+  enum status: %i[pending done canceled]
 
   validates :physician_id, :patient_id, :appointment_date , presence:true
   validate :appointment_date_cannot_be_in_past
 
-  scope :today_appointment, ->(id) { 
+  scope :today_appointment, ->(id) do
     where(physician_id: id, appointment_date: Date.current)
-  }
+  end
   scope :pending_appointment, ->(id) { where(status: 'pending', physician_id: id, appointment_date: Date.current) }
   scope :current_user, ->(id) { where(physician_id: id) }
 
