@@ -4,7 +4,7 @@
 	<td><%= ward.ward_type%></td>
 	<td class="status"><%= ward.status.humanize.titleize %></td> 
 	<td>
-	  <%= link_to ward.status.humanize.titleize, admin_ward_path(ward), remote: true, method: 'put', class: 'btn btn-warning update_row'%>
+	  <%= link_to ward.status.humanize.titleize, admin_ward_path(ward), remote: true, method: 'put', class: 'btn btn-warning', id: "update-row-#{ward.id}"%>
 	  <%= link_to 'Delete', admin_ward_path(ward), method: :delete, remote: true, class: 'btn btn-danger delete_row'%>
 	</td>          
 </tr>

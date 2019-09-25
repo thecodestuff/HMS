@@ -1,5 +1,5 @@
 <h2>List of Nurses
-  <span class="badge badge-pill badge-info"><%= User.is_nurse.count %></span>
+  <span class="badge badge-pill badge-info"><%= User.by_role(:Nurse).count %></span>
 </h2>
 <% @users = @nurses %>
 <%= render 'table' %>

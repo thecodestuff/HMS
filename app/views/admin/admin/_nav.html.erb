@@ -14,7 +14,7 @@
   
         <li class="nav-item ">
           <a class="nav-link" href="<%= admin_users_path %>">  Users
-            <span class="badge badge-pill badge-warning"><%= User.is_admin %></span>
+            <span class="badge badge-pill badge-warning"><%= User.by_role(:Admin) %></span>
           </a>
         </li>
   

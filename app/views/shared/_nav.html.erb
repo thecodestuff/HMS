@@ -33,7 +33,7 @@
 
 <% if !current_user.admin? %>
   <li class="nav-item">
-		<a class="nav-link" href="#">Refferals</a>
+		<a class="nav-link" href="<%= admin_calender_url %>">Calender</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="<%= admin_appointments_path %>">Appointments</a>

@@ -12,9 +12,9 @@ module Admin
 
     def create
       @patient = Patient.new(patient_params)
+      @patient.save
+      message = @patient.errors.any? ? @patient.errors[:base][0] : 'Patient admitted'
       respond_to do |format|
-        message = 'Patient admitted'
-        message = 'Patient already admitted' unless @patient.save
         format.html { redirect admin_manage_patient_path, message }
       end
     end

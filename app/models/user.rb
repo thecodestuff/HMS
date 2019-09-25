@@ -13,16 +13,15 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
-  scope :is_admin,     -> { where(role: :Admin) }
-  scope :is_nurse,     -> { where(role: :Nurse) }
-  scope :is_physician, -> { where(role: :Physician) }
-  scope :is_patients,  -> { where(role: :Patient) }
-  scope :by_role, -> { where(role: role) }
-  scope :is_admit, -> { includes(:patient).where(role:'Patient').map{|user| [user.firstname, user.id ] }
-}
+  # scope :is_admin,     -> { where(role: :Admin) }
+  # scope :is_nurse,     -> { where(role: :Nurse) }
+  # scope :is_physician, -> { where(role: :Physician) }
+  # scope :is_patients,  -> { where(role: :Patient) }
+  scope :by_role, ->(role) { where(role: role) }
+  scope :is_admit, -> { includes(:patient).where(role:'Patient').map { |user| [user.firstname, user.id ] } }
 
   def humanize_name
-    self.firstname = self.firstname.humanize
-    self.lastname = self.lastname.humanize
+    self.firstname = firstname.humanize
+    self.lastname = lastname.humanize
   end
 end

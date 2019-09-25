@@ -5,13 +5,7 @@ module Admin
   class UsersController < ApplicationController
     before_action :find_user, only: %i[update edit]
     before_action :paginate_user, only: %i[index]
-    #before_action :paginate_admin_user, only: %i[index]
-    #before_action :paginate_patient_user, only: %i[index]
-    #before_action :paginate_physician_user, only: %i[index]
-    #before_action :paginate_nurse_user, only: %i[index]
-
     def index
-      #@users = User.page(params[:page])
       @users = User.all
     end
 
@@ -73,22 +67,6 @@ module Admin
 
     def paginate_user
       @users = User.page(params[:page]).includes(:avatar_attachment)
-    end
-
-    def paginate_admin_user
-      @admins = @users.is_admin.page(params[:admin_tab]).per(5)
-    end
-
-    def paginate_physician_user
-      @physicians = @users.is_physician.page(params[:physician_tab]).per(5)
-    end
-
-    def paginate_patient_user
-      @patients = @users.is_patients.page(params[:admin_tab]).per(5)
-    end
-
-    def paginate_nurse_user
-      @nurses = @users.is_nurse.page(params[:nurse_tab]).per(5)
     end
   end
 end
