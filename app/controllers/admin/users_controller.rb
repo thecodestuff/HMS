@@ -6,7 +6,7 @@ module Admin
     before_action :find_user, only: %i[update edit]
     before_action :paginate_user, only: %i[index]
     def index
-      @users = User.all
+      @users = User.with_attached_avatar  
     end
 
     def get_data
