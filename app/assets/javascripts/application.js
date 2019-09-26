@@ -18,4 +18,7 @@
 //= require bootstrap-sprockets
 //= require jquery.datatables.js
 //= flash.js
+//= require chartkick
+//= require Chart.bundle.js
+//= require Chart.js
 //= require_tree .

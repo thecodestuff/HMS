@@ -102,3 +102,5 @@ gem 'uniform_notifier', '~> 1.12', '>= 1.12.1'
 gem "breadcrumbs_on_rails"
 # calender 
 gem "simple_calendar", "~> 2.0"
+# chartkick gem for charting 
+gem 'chartkick'

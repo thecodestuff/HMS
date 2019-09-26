@@ -3,6 +3,7 @@
 module Admin
   # create a invoice for patient
   class InvoiceController < ApplicationController
+    before_action :find_patient, only: [:create]
     before_action :invoice, only: [:create]
     before_action :find_invoice, only: %i[update_status show]
 
@@ -11,9 +12,11 @@ module Admin
     end
 
     def create
-      message = 'Invoice created success'
-      message = 'failed to create invoice, checkout first' unless @invoice.save
-      flash[:notice] = 'invoice created success'
+      message = @invoice.errors[:base][0]
+      if @invoice.errors.none?
+        @patient.update(status: 'discharged')
+        message = 'Patient discharged!!!'
+      end
       redirect admin_manage_patient_path, message
     end
 
@@ -47,17 +50,17 @@ module Admin
     end
 
     def invoice
-      patient = Patient.find(params[:id])
       begin
-        @invoice = patient.create_invoice(
-                  amount: calculate_bill(patient),
+        @invoice = @patient.create_invoice(
+                  amount: calculate_bill(@patient),
+                  status: 'paid',
                   transactionId: SecureRandom.hex(10),
                   bill_date: Date.current,
-                  admit_on: patient.admit_date,
-                  discharged: patient.dischagre_on,
-                  days: calculate_days(patient),
-                  appointments: calculate_appointments(patient),
-                  ward_rate: ward_rate(patient)
+                  admit_on: @patient.admit_date,
+                  discharged: Date.current,
+                  days: calculate_days(@patient),
+                  appointments: calculate_appointments(@patient),
+                  ward_rate: ward_rate(@patient)
                 )
       rescue StandardError => e
         @invoice = Invoice.new
@@ -70,8 +73,8 @@ module Admin
     end
 
     def calculate_days(patient)
-      days = patient.dischagre_on.day - patient.admit_date.day
-      days.zero? && patient.admit? ? 1 : 0
+      days = (patient.dischagre_on.day - patient.admit_date.day).abs
+      days.zero? ? 1 : days
     end
 
     def calculate_appointments(patient)
@@ -84,6 +87,11 @@ module Admin
 
     def find_invoice
       @patient_invoice = Invoice.find(params[:id])
+    end
+
+    def find_patient
+      @patient = Patient.find(params[:id])
+      @patient.update(dischagre_on: Date.current)
     end
   end
 end

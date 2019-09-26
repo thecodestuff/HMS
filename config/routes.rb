@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :appointments, only: %i[index new create destroy update]
     resources :wards, only: %i[index create destroy update]
     resources :invoice, only: %i[index show]
+    resources :physician, only: %i[update]
     get 'patient/invoice/:id', to: 'invoice#create', as: :create_invoice
     get 'patient/invoice/update/:id', to: 'invoice#update_status', as: :invoice_status
     get 'manage/patient', to: 'patients#patients'
@@ -22,5 +23,6 @@ Rails.application.routes.draw do
     get 'get_dataset', to: 'users#get_data'
     get 'appointments/cancel/:id', to: 'appointments#cancel_appointment', as: :cancel_appointment
     get 'appointments/calender', to: 'appointments#calender', as: :calender
+    get 'physician/charges/:id', to: 'physician#charges', as: :charges
   end
 end

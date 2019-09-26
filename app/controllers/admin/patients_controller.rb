@@ -3,7 +3,7 @@
 module Admin
   # Handle patients operation
   class PatientsController < ApplicationController
-    before_action :find_patient, only: %i[update destroy update_discharge_date]
+    before_action :find_patient, only: %i[update destroy ]
     before_action :check_billing_status, only: %i[update]
 
     def new
@@ -45,13 +45,15 @@ module Admin
       end
     end
 
-    def update_discharge_date
-      @patient.update(dischagre_on: Date.current) if @patient.dischagre_on.nil?
-      respond_to do |format|
-        format.html { redirect admin_manage_patient_path, 'Patient checkout' }
-        format.js
-      end
-    end
+    # This function  removed as part of re-factor , to use apply as before_action
+    # def update_discharge_date
+    #   @patient.update(dischagre_on: Date.current) if @patient.dischagre_on.nil?
+    #   respond_to do |format|
+    #     format.html { redirect admin_manage_patient_path, 'Patient checkout' }
+    #     format.js
+    #   end
+    # end
+    
 
     private
 

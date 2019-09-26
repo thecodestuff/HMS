@@ -5,7 +5,7 @@ class Patient < ApplicationRecord
   enum patient_type: %i[out_patient in_patient emergency]
   enum status: %i[not_admit admit refered discharged checkout]
 
-  validate :status_cannot_be_dischared_on_creating
+  #validate :status_cannot_be_dischared_on_creating
 
   before_create :dump_admit_date
   after_create :update_ward_status

@@ -13,6 +13,11 @@
  .custom_tabs li{
   margin:10px;
 }
+
+.center{
+  width:300px;
+  margin:0px auto;
+}
 .logout i{
   color:white;
 }
