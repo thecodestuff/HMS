@@ -1,7 +1,7 @@
 module Admin::AppointmentsHelper
   def get_physician_names
     User.by_role(:Physician).collect do |user| 
-      [user.firstname, user.physician.id] if user.physician.present? 
+      [user.firstname, user.physician.id] if user.physician.present?
     end.compact
   end
 

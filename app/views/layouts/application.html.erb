@@ -25,6 +25,9 @@
     <%end%>
         <div class="container">
         <%= yield %>
+        <div>
+         <a href="btn btn-primary"><< Back</a>
+        </div>
         <!-- Sticky Footer -->
         <%= render 'shared/footer' if current_user.present? %>
         </div>

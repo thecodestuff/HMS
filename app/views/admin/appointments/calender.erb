@@ -1,0 +1,23 @@
+<%= month_calendar events:@appointments do |date, appointments| %>
+  <h6><%= date.day %></h6>
+
+  <% appointments.each do |appointment|%>
+    <div class=<%= appointment.done? ? 'done' : 'pending' %>>
+      <strong><%= appointment.status.humanize  %></strong>
+    </div>
+  <%end%>
+<% end %>
+
+<style>
+  .done{
+    height:20px;
+    background-color:red;
+    text-align:center;
+  }
+
+  .pending{
+    height:20px;
+    background-color:green;
+    text-align:center;
+  }
+</style>

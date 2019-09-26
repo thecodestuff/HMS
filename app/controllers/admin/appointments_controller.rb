@@ -49,7 +49,6 @@ module Admin
 
     def calender
       @appointments = Appointment.all
-      render partial: 'calender'
     end
 
     private

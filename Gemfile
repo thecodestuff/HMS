@@ -50,6 +50,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # For checking memory leaks and benchmarking code"
+  gem "memory_profiler"
+  gem "derailed_benchmarks"
 end
 
 group :test do
@@ -101,6 +104,6 @@ gem 'uniform_notifier', '~> 1.12', '>= 1.12.1'
 # simon carletti breadcrumb
 gem "breadcrumbs_on_rails"
 # calender 
-gem "simple_calendar", "~> 2.0"
+gem "simple_calendar"
 # chartkick gem for charting 
 gem 'chartkick'
