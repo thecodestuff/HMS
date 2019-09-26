@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_110441) do
+ActiveRecord::Schema.define(version: 2019_09_26_063304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_09_25_110441) do
     t.integer "appointments"
     t.string "transactionId", default: ""
     t.integer "ward_rate", default: 100
+    t.decimal "appointment_charge", default: "0.0"
     t.index ["patient_id"], name: "index_invoices_on_patient_id"
   end
 

@@ -74,8 +74,8 @@ ul{
     <div class="Column">2</div>
     <div class="Column">No of Appointments</div>
     <div class="Column"><%= @patient_invoice.appointments %></div>
-    <div class="Column">150</div>
-    <div class="Column"><%= @patient_invoice.appointments*150 %> &#8377;</div>
+    <div class="Column"><%= @patient_invoice.appointment_charge %></div>
+    <div class="Column"><%= @patient_invoice.appointments*@patient_invoice.appointment_charge %> &#8377;</div>
   </div>
   <hr/>
   <div class="Row">

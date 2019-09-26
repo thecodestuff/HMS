@@ -52,15 +52,12 @@ module Admin
     def invoice
       begin
         @invoice = @patient.create_invoice(
-                  amount: calculate_bill(@patient),
-                  status: 'paid',
-                  transactionId: SecureRandom.hex(10),
-                  bill_date: Date.current,
-                  admit_on: @patient.admit_date,
-                  discharged: Date.current,
-                  days: calculate_days(@patient),
-                  appointments: calculate_appointments(@patient),
-                  ward_rate: ward_rate(@patient)
+                  amount: calculate_bill(@patient), status: 'paid',
+                  transactionId: SecureRandom.hex(10), bill_date: Date.current,
+                  admit_on: @patient.admit_date, discharged: Date.current,
+                  days: calculate_days(@patient), appointments: calculate_appointments(@patient),
+                  ward_rate: ward_rate(@patient),
+                  appointment_charge: calculate_appointments_charges(@patient)
                 )
       rescue StandardError => e
         @invoice = Invoice.new
@@ -69,7 +66,7 @@ module Admin
     end
 
     def calculate_bill(patient)
-      calculate_days(patient) * ward_rate(patient) + patient.appointments.count * 200
+      calculate_days(patient) * ward_rate(patient) + calculate_appointments_charges(patient)
     end
 
     def calculate_days(patient)
@@ -79,6 +76,16 @@ module Admin
 
     def calculate_appointments(patient)
       patient.appointments.where(status: 'done').count
+    end
+
+    def calculate_appointments_charges(patient)
+      appointments = patient.appointments.done
+                            .joins(:physician)
+                            .select(:appointment_date, :charge, :charge_at_weekend)
+
+      appointments.collect do |attr|
+        attr.appointment_date.on_weekend? ? attr.charge_at_weekend.to_i : attr.charge.to_i
+      end.sum
     end
 
     def ward_rate(patient)
