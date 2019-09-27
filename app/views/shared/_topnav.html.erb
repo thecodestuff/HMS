@@ -16,13 +16,18 @@
   </form>
   <!-- Navbar -->
   <ul class="navbar-nav ml-auto ml-md-0 ">
-    <li class="nav-item active ">
-      <h5 class="nav-link text-center"><%= image_tag current_user.avatar, class:'rounded-circle',width:'30px',height:'30px' %></h5>
-    </li>
-    <li class="nav-item ">
-      <a class="nav-link logout" href="<%= logout_path %>" >
-        <i class="fa fa-power-off fa-lg"></i>
-      </a>
+
+    <li>
+      <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background-color: #343a40;border:0px">
+      <%= image_tag current_user.avatar, class:'rounded-circle',width:'30px',height:'30px' %>
+    </button>
+    <div class="dropdown-menu" style="margin-left:-70px;">
+      <a class="dropdown-item" href="#"><%= current_user.firstname%></a>
+      <a class="dropdown-item" href="<%= edit_admin_user_path current_user %>">Edit Profile</a>
+      <a class="dropdown-item" href="<%= logout_path %>">Logout</a>
+    </div>
+  </div>
     </li>
   </ul>
 </nav>
