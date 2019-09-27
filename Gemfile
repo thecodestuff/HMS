@@ -107,3 +107,5 @@ gem "breadcrumbs_on_rails"
 gem "simple_calendar"
 # chartkick gem for charting 
 gem 'chartkick'
+# faker for generating fake test data
+gem 'faker', '~> 2.4'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_120028) do
+ActiveRecord::Schema.define(version: 2019_09_27_091507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,20 @@ ActiveRecord::Schema.define(version: 2019_09_26_120028) do
     t.decimal "charge", default: "100.0"
     t.decimal "charge_at_weekend"
     t.index ["user_id"], name: "index_physicians_on_user_id"
+  end
+
+  create_table "sample_data_tables", force: :cascade do |t|
+    t.integer "patient_id"
+    t.integer "amount"
+    t.integer "month"
+  end
+
+  create_table "samples", force: :cascade do |t|
+    t.integer "patient_id"
+    t.decimal "amount"
+    t.integer "month"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

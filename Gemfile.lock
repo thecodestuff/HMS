@@ -112,6 +112,8 @@ GEM
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (2.4.0)
+      i18n (~> 1.6.0)
     ffi (1.11.1)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -291,6 +293,7 @@ DEPENDENCIES
   derailed_benchmarks
   devise
   dotenv-rails
+  faker (~> 2.4)
   figaro
   font-awesome-rails
   hirb
