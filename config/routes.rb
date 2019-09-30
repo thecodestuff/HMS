@@ -25,4 +25,9 @@ Rails.application.routes.draw do
     get 'appointments/calender', to: 'appointments#calender', as: :calender
     get 'physician/charges/:id', to: 'physician#charges', as: :charges
   end
+
+  # routes for api
+  namespace :api do
+    get 'data/appointments', to: 'report#generate_appointment_report'
+  end
 end

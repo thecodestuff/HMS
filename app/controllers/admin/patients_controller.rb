@@ -53,7 +53,7 @@ module Admin
     #     format.js
     #   end
     # end
-    
+
 
     private
 
