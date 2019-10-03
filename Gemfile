@@ -41,6 +41,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry', '~> 0.12.2'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'factory_bot', '~> 5.1', '>= 5.1.1'
 end
 
 group :development do
@@ -53,6 +57,8 @@ group :development do
   # For checking memory leaks and benchmarking code"
   gem "memory_profiler"
   gem "derailed_benchmarks"
+  gem 'capybara', '>= 2.15'
+  gem 'faker', '~> 2.5'
 end
 
 group :test do
@@ -108,4 +114,4 @@ gem "simple_calendar"
 # chartkick gem for charting 
 gem 'chartkick'
 # faker for generating fake test data
-gem 'faker', '~> 2.4'
+#gem 'faker', '~> 2.4'
