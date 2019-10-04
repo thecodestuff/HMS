@@ -2,9 +2,9 @@ require 'faker'
 
 FactoryBot.define do
   factory :user do
-    email       { Faker::Internet.email }
-    firstname   { Faker::Name.first_name }
-    lastname    { Faker::Name.last_name }
+    email       { 'mahendrachoudhary@gmail.com' }
+    firstname   { Faker::Name.first_name.downcase }
+    lastname    { Faker::Name.last_name.downcase }
     password    { Faker::Internet.password(min_length: 6, max_length: 10) }
     civil_id    { Faker::Number.number(digits: 10) }
     department  { Faker::Lorem.words }
