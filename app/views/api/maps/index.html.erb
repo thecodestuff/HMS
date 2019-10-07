@@ -13,4 +13,30 @@
 </table>
 
 <br>
+
+<div id="mapid"></div>
+
+<script>
+function fetch_data_from_api(){
+  // using fetch api
+  fetch('http://localhost:3000/api/maps.json').then(response => {
+    return response.json() ;
+  }).then(data => {
+    console.log(data );
+  });
+}
+
+var mymap = L.map('mapid').setView([22.7196,  75.8577], 13);
+ //open stree map url -https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+ //mapbox map url : 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  	maxZoom: 21,
+  	id: 'mapbox.streets',
+  	accessToken: 'pk.eyJ1IjoibWFoZW5kcmFjaG91ZGhhcnkiLCJhIjoiY2pyOHdldHRkMDB0cTQ5bmt5ZmtmcGhkdCJ9.ELcQW-I7rlh75ZUF9sFChg'
+}).addTo(mymap);
+
+var marker = L.marker([22.7196, 75.8577]).addTo(mymap);
+
+fetch_data_from_api();
+</script>
 <%= link_to 'New Api Map', new_api_map_path %>

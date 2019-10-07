@@ -1,1 +1,1 @@
-json.partial! "api_maps/api_map", api_map: @api_map
+json.partial! "api_map", api_map: @api_map

@@ -17,6 +17,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery.datatables.js
+//= require leaflet.js
 //= flash.js
 //= require chartkick
 //= require Chart.bundle.js

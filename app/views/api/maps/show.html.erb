@@ -15,5 +15,23 @@
   <%= @api_map.long %>
 </p>
 
+<p>
+  <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{@api_map.lat},#{@api_map.long}&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+</p>
+
+<div id="mapid"></div>
+
+<script>
+var mymap = L.map('mapid').setView([22.7196,  75.8577], 13);
+// open stree map url -https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+// mapbox map url : 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  	maxZoom: 21,
+  	id: 'mapbox.streets',
+  	accessToken: 'pk.eyJ1IjoibWFoZW5kcmFjaG91ZGhhcnkiLCJhIjoiY2pyOHdldHRkMDB0cTQ5bmt5ZmtmcGhkdCJ9.ELcQW-I7rlh75ZUF9sFChg'
+}).addTo(mymap);
+
+var marker = L.marker([22.7196, 75.8577]).addTo(mymap);
+</script>
 <%= link_to 'Edit', edit_api_map_path(@api_map) %> |
 <%= link_to 'Back', api_maps_path %>
