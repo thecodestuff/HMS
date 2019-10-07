@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root to: 'home#index'
   devise_for :users, :controllers => { :registrations => 'admin/registrations' }
 
@@ -29,5 +30,10 @@ Rails.application.routes.draw do
   # routes for api
   namespace :api do
     get 'data/appointments', to: 'report#generate_appointment_report'
+  end
+
+  # Routes for maps api
+  namespace :api do
+    resources :maps
   end
 end

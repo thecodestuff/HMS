@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @api_map.name %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @api_map.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @api_map.long %>
+</p>
+
+<%= link_to 'Edit', edit_api_map_path(@api_map) %> |
+<%= link_to 'Back', api_maps_path %>

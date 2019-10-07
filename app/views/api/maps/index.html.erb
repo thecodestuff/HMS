@@ -1,0 +1,16 @@
+<h1>Api Maps</h1>
+
+<table class="responsive nowrap table table-hover" id="dttb-api_maps" data-sort="true" data-source="<%= url_for(format: :json)%>">
+  <thead>
+    <tr>
+      <th data-data="name">Name</th>
+      <th data-data="lat">Lat</th>
+      <th data-data="long">Long</th>
+      <th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"></th>
+    </tr>
+  </thead>
+
+</table>
+
+<br>
+<%= link_to 'New Api Map', new_api_map_path %>
