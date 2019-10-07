@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'factories/patient'
 require 'factories/ward_occupancy_detail'
 
-RSpec.describe Patient do
-
+RSpec.describe Patient, type: :model do
   let(:user) { create(:user) }
   let(:ward_occupancy_detail) { create(:ward_occupancy_detail) }
-  let(:patient) { create(:patient, user_id:user.id, ward_occupancy_detail_id:ward_occupancy_detail.id) }
- 
-  context 'patient model validations' do 
-    # user = build_and_create_patient
+  let(:patient) { create(:patient, user_id: user.id, ward_occupancy_detail_id:ward_occupancy_detail.id) }
+
+  context 'patient model validations' do
     it { is_expected.to validate_uniqueness_of(:user_id) }
   end
 
@@ -27,10 +27,10 @@ RSpec.describe Patient do
     end
 
     it 'should update ward status to not empty if patient is admit' do
-      patient.update(status:'admit')
+      patient.update(status: 'admit')
       expect(patient.status).to eq('admit')
       expect(patient.ward_occupancy_detail.status).to eq('not_empty')
-    end 
+    end
 
     it 'should update ward status to empty after patient dischrged' do
       patient.update(status: 'discharged')

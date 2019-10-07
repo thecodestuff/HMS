@@ -30,7 +30,7 @@ class Patient < ApplicationRecord
     ward_occupancy_detail.update(status: 'empty') if status == 'discharged'
   end
 
-  def status_cannot_be_dischared_on_creating
-    errors.add(:base, 'Patient not admit') if discharged?
-  end
+  # def status_cannot_be_dischared_on_creating
+  #   errors.add(:base, 'Patient not admit') if discharged?
+  # end
 end
