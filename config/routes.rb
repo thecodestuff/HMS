@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   
   root to: 'home#index'
-  devise_for :users, :controllers => { :registrations => 'admin/registrations' }
+  #devise_for :users, :controllers => { :registrations => 'admin/registrations' }
+  devise_for :users, controllers: { omniauth_callbacks: 'admin/omniauth_callbacks' }
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'logout', to: 'devise/sessions#destroy'
   end
+
+  # devise_scope :user do
+  #   get 'auth/github', to: 'admin/omniauth_callbacks#passthru'
+  #   get 'auth/github/callback', to: 'admin/omniauth_callbacks#github'
+  # end
 
   namespace :admin do
     root to: 'admin#index'

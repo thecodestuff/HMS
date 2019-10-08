@@ -59,6 +59,8 @@ group :development do
   gem "derailed_benchmarks"
   gem 'capybara', '>= 2.15'
   gem 'faker', '~> 2.5'
+  # auth with gihub in hand with devise
+  gem 'omniauth-github'
 end
 
 group :test do

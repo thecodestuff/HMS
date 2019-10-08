@@ -6,7 +6,7 @@ module Admin
     before_action :find_user, only: %i[update edit]
     before_action :paginate_user, only: %i[index]
     def index
-      @users = User.with_attached_avatar  
+      @users = User.with_attached_avatar
     end
 
     def get_data
@@ -52,8 +52,8 @@ module Admin
       params.require(:user).permit(
         :firstname, :lastname, :civil_id, :email, :password,
         :previlige_level, :admin, :department, :phone, :blood_group,
-        :age, :house_no, :street, :locality, :city,
-        :state, :country, :pincode, :role, :avatar
+        :age, :house_no, :street, :locality, :city, :provider,
+        :state, :country, :pincode, :role, :avatar, :uid
       )
     end
 
