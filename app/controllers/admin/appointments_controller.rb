@@ -60,7 +60,7 @@ module Admin
     end
 
     def fetch_records
-      @appointments = current_user.admin? ? Appointment.includes(:patient, :physician).all : Appointment#.includes(:physician).current_user(current_user.physician)
+      @appointments = current_user.admin? ? Appointment.includes(:patient, :physician).all : Appointment.current_user(current_user.physician)
       @appointments.collect do |appointment|
         [
           appointment.id, appointment.patient.user.firstname,
