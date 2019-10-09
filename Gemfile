@@ -59,9 +59,13 @@ group :development do
   gem "derailed_benchmarks"
   gem 'capybara', '>= 2.15'
   gem 'faker', '~> 2.5'
-  # auth with gihub in hand with devise
-  gem 'omniauth-github'
-  gem 'omniauth-facebook'
+  # hirb preety print
+  gem 'hirb'
+  # kill N+1 queries 
+  gem 'bullet', '~> 6.0', '>= 6.0.2'
+  # dependency for bullet
+  gem 'uniform_notifier', '~> 1.12', '>= 1.12.1'
+
 end
 
 group :test do
@@ -84,8 +88,6 @@ gem 'jquery-rails'
 # for authentication
 gem 'devise'
 
-# hirb preety print
-gem 'hirb'
 
 # font awesome 
 gem 'font-awesome-rails'
@@ -106,15 +108,13 @@ gem 'bootstrap4-kaminari-views'
 # pdf kit for genrating pdf invoices
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-# kill N+1 queries 
-gem 'bullet', '~> 6.0', '>= 6.0.2'
-# dependency for bullet
-gem 'uniform_notifier', '~> 1.12', '>= 1.12.1'
 # simon carletti breadcrumb
 gem "breadcrumbs_on_rails"
 # calender 
 gem "simple_calendar"
 # chartkick gem for charting 
 gem 'chartkick'
-# faker for generating fake test data
-#gem 'faker', '~> 2.4'
+
+# auth with gihub in hand with devise
+gem 'omniauth-github'
+gem 'omniauth-facebook'
