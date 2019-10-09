@@ -41,10 +41,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry', '~> 0.12.2'
-  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
-  gem 'factory_bot', '~> 5.1', '>= 5.1.1'
 end
 
 group :development do
@@ -65,6 +61,11 @@ group :development do
   gem 'bullet', '~> 6.0', '>= 6.0.2'
   # dependency for bullet
   gem 'uniform_notifier', '~> 1.12', '>= 1.12.1'
+
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'factory_bot', '~> 5.1', '>= 5.1.1'
 
 end
 
