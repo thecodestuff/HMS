@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   devise :database_authenticatable, :recoverable, :rememberable,
-         :validatable,  :omniauthable, omniauth_providers: %i[github facebook]
+         :validatable, :omniauthable, omniauth_providers: %i[github facebook]
 
   scope :by_role, ->(role) { where(role: role) }
   scope :is_admit, -> { includes(:patient).where(role: 'Patient').map { |user| [user.firstname, user.id ] } }

@@ -16,8 +16,8 @@ module Admin
 
     def create
       @appointment = Appointment.new(appointment_params)
+      flash[:notice] = 'Operation failed' unless @appointment.save
       respond_to do |format|
-        flash[:notice] = 'Operation failed' unless @appointment.save
         format.html { redirect_to new_admin_appointment_path }
         format.js { @appointment = fetch_records }
       end
@@ -31,11 +31,9 @@ module Admin
 
     def update
       @appointment = Appointment.find(params[:id])
-      respond_to do |format|
-        @appointment.update(status: 1)
-        @appointment.save if @appointment.valid?
-        format.js
-      end
+      @appointment.update(status: 'done')
+
+      respond_to { |format| format.js }
     end
 
     def cancel_appointment

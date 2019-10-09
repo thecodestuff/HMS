@@ -61,6 +61,7 @@ group :development do
   gem 'faker', '~> 2.5'
   # auth with gihub in hand with devise
   gem 'omniauth-github'
+  gem 'omniauth-facebook'
 end
 
 group :test do
