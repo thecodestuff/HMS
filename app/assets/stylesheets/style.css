@@ -506,6 +506,9 @@ label.valid {
 .zmdi-google {
   background: #e72734; }
 
+  .zmdi-github {
+    background: #222; }
+
 .signin-form {
   margin-right: 90px;
   margin-left: 80px; }
