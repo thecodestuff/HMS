@@ -31,4 +31,4 @@
 /config/master.key
 
 # envornment variables containg password and api secrets
-.env
+/.env
