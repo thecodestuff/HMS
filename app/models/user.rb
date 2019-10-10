@@ -26,8 +26,8 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 10]
-      user.firstname, user.lastname = auth.info.name.split(' ')   # assuming the user model has a name
-      user.lastname = "not found" if user.lastname.nil?
+      user.firstname, user.lastname = auth.info.name.split(' ')
+      user.lastname = 'not found' if user.lastname.nil?
       user.civil_id = '0000000000'
       user.phone = '9878765678'
       user.role ='Physician'
