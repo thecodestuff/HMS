@@ -7,6 +7,7 @@ module Admin
 
     def github
       if @user.persisted?
+        @user.create_physician
         sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
         set_flash_message(:notice, :success, kind: 'github') if is_navigational_format?
       else
@@ -17,6 +18,7 @@ module Admin
 
     def facebook
       if @user.persisted?
+        @user.create_physician
         sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
         set_flash_message(:notice, :success, kind: 'facebook') if is_navigational_format?
       else
