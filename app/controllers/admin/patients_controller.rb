@@ -11,8 +11,10 @@ module Admin
     end
 
     def create
-      @patient = Patient.new(patient_params)
-      @patient.save
+      #@patient = Patient.new(patient_params)
+      #@patient.save
+      @patient = Patient.find_or_create_patient(patient_params)
+      @patient.update(patient_params)
       message = @patient.errors.any? ? @patient.errors[:base][0] : 'Patient admitted'
       respond_to do |format|
         format.html { redirect admin_manage_patient_path, message }
