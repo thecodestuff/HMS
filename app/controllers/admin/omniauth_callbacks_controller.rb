@@ -3,7 +3,7 @@
 module Admin
   # Handles omniauth
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    before_action :find_or_create_user
+    #before_action :find_or_create_user
 
     def github
       if @user.persisted?
@@ -28,6 +28,7 @@ module Admin
     end
 
     def google_oauth2
+      @user = User.from_omniauth(request.env['omniauth.auth'])
       if @user.persisted?
         @user.create_physician
         sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated

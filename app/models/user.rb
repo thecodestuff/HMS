@@ -30,7 +30,7 @@ class User < ApplicationRecord
       user.lastname = 'not found' if user.lastname.nil?
       user.civil_id = '0000000000'
       user.phone = '9878765678'
-      user.role ='Physician'
+      user.role = 'Physician'
 
       user.token = auth.credentials.token
       user.expires = auth.credentials.expires
