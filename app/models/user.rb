@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# handle logic related to user
 class User < ApplicationRecord
   enum role: %i[Patient Admin Physician Nurse]
   before_save :humanize_name
@@ -36,7 +39,7 @@ class User < ApplicationRecord
       user.expires = auth.credentials.expires
       user.expires_at = auth.credentials.expires_at
       user.refresh_token = auth.credentials.refresh_token
-      #user.avatar = auth.info.image # assuming the user model has an image
+      # user.avatar = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!

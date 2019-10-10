@@ -31,7 +31,7 @@ class Patient < ApplicationRecord
   end
 
   def self.find_or_create_patient(patient_params)
-    where(user_id:patient_params[:user_id]).first_or_create do |patient|
+    where(user_id: patient_params[:user_id]).first_or_create do |patient|
       patient.update_attributes(patient_params)
     end
   end
