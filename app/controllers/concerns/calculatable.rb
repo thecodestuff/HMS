@@ -13,7 +13,9 @@ module Calculatable
   end
 
   def calculate_appointments(patient)
-    patient.appointments.where(status: 'done').count
+    patient.appointments
+           .where('appointment_date > :date and status = :status', date: patient.dischagre_on, status:1)
+           .count
   end
 
   def calculate_appointments_charges(patient)

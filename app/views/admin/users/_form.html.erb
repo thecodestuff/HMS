@@ -71,7 +71,7 @@
 
   <div class="form-group">
     <%= f.label :role %>
-    <%= f.select :role, options_for_select(User.roles.map{|k,v| [k,k]}), include_blank: 'Choose role' %>
+    <%= f.select :role, options_for_select(User.roles.map{|k,v| [k,k]}, selected:@user.role), include_blank: 'Choose role' %>
   </div>
 
   <div class="form-group">
