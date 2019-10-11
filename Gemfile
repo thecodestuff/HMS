@@ -8,9 +8,6 @@ gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 gem 'pg'
-
-# ERD gem for visualizing the db structure
-gem 'erd'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -68,6 +65,8 @@ group :development do
   gem 'bullet', '~> 6.0', '>= 6.0.2'
   # dependency for bullet
   gem 'uniform_notifier', '~> 1.12', '>= 1.12.1'
+  # ERD gem for visualizing the db structure
+  gem 'erd'
 
 end
 
