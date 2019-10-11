@@ -8,29 +8,29 @@
   </li>
   
   <% if current_user.admin? %>
-    <li class="nav-item ">
-      <a class="nav-link" href="<%= admin_users_path %>">User Management</a>
+    <li class="nav-item <%= active_nav_link(admin_users_path) %>">
+      <a class="nav-link" href="<%= admin_users_path %>">User Management </a>
     </li>
     <!--li class="nav-item ">
       <a class="nav-link" href="<%= new_admin_user_path %>">  Create User</a>
     </li-->
-    <li class="nav-item">
+    <li class="nav-item <%= active_nav_link(admin_manage_patient_path) %>">
       <a class="nav-link" href="<%= admin_manage_patient_path %>">Manage Patients</a>
     </li>
     <!--li class="nav-item">
       <a class="nav-link" href="<%= new_admin_patient_path %>">Admit patients</a>
     </li-->
-    <li class="nav-item">
+    <li class="nav-item <%= active_nav_link(admin_appointments_path) %>">
       <a class="nav-link" href="<%= admin_appointments_path %>">Manage apointment</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item <%= active_nav_link(admin_wards_path) %>">
       <a class="nav-link" href="<%= admin_wards_path %>">Manage Wards</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item <%= active_nav_link(admin_invoice_index_path) %>">
       <a class="nav-link" href="<%= admin_invoice_index_path %>">Invoice Management</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%= api_maps_path %>">Visualization</a>
+    <li class="nav-item <%= active_nav_link(api_maps_path) %>">
+      <a class="nav-link" href="<%= api_maps_path %>">Map</a>
     </li>
 <%end%>
 

@@ -23,6 +23,6 @@ class Invoice < ApplicationRecord
   end
 
   def cannot_create_invoice_if_patient_discharged
-    errors[:base] << 'invoice already generated' if patient.discharged?
+    errors[:base] << 'Invoice already generated' if patient.discharged?
   end
 end

@@ -5,6 +5,7 @@ module Admin
   class InvoiceController < ApplicationController
     include Calculatable
 
+    before_action :authenticate_user!
     before_action :find_patient, only: [:create]
     before_action :invoice, only: [:create]
     before_action :find_invoice, only: %i[update_status show]

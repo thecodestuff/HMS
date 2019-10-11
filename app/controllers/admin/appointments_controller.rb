@@ -3,6 +3,7 @@
 module Admin
   # Appointment actions
   class AppointmentsController < ApplicationController
+    before_action :authenticate_user!
     before_action :new_appointment
     before_action :find_appointment, only: %i[cancel_appointment]
     before_action :cannot_cancel_appointment_if_done, only: %i[cancel_appointment]

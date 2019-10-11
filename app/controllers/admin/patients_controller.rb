@@ -3,6 +3,7 @@
 module Admin
   # Handle patients operation
   class PatientsController < ApplicationController
+    before_action :authenticate_user!
     before_action :find_patient, only: %i[update destroy]
     before_action :check_billing_status, only: %i[update]
 

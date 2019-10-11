@@ -7,4 +7,8 @@ module ApplicationHelper
   def format_date(date)
     date.strftime('%d %B %Y') if date.present?
   end
+
+  def active_nav_link(path)
+    class_name = current_page?(path) ? 'current active' : ''
+  end
 end

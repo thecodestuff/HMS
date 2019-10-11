@@ -1,6 +1,6 @@
-<h1>Api Maps</h1>
+<h1>Visualize Data</h1>
 
-<table class="responsive nowrap table table-hover" id="dttb-api_maps" data-sort="true" data-source="<%= url_for(format: :json)%>">
+<!---table class="responsive nowrap table table-hover" id="dttb-api_maps" data-sort="true" data-source="<%= url_for(format: :json)%>">
   <thead>
     <tr>
       <th data-data="name">Name</th>
@@ -10,7 +10,7 @@
     </tr>
   </thead>
 
-</table>
+</table-->
 
 <br>
 
@@ -22,7 +22,8 @@ function fetch_data_from_api(){
   fetch('http://localhost:3000/api/maps.json').then(response => {
     return response.json() ;
   }).then(data => {
-    console.log(data );
+    console.log("access json data:")
+    console.log(data[0] );
   });
 }
 
@@ -39,4 +40,4 @@ var marker = L.marker([22.7196, 75.8577]).addTo(mymap);
 
 fetch_data_from_api();
 </script>
-<%= link_to 'New Api Map', new_api_map_path %>
+<%#= link_to 'New Api Map', new_api_map_path %>

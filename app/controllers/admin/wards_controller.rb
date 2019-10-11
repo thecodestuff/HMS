@@ -3,6 +3,8 @@
 module Admin
   # Handles ward operation and status
   class WardsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :authenticate_user!
     after_action :empty_ward, only: [:update]
     before_action :find_ward, only: %i[destroy update]
 
