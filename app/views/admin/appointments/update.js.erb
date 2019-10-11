@@ -1,6 +1,6 @@
 function updateStatus(){
   $('.update_status').bind('ajax:success', function(){
-    $(this).addClass("disabled").attr("css").css("cursor","not-allowed")
+    $(this).addClass("disabled").attr("css").css("cursor","not-allowed");
   });
 }
 
@@ -8,5 +8,6 @@ function updateFlash(){
 $('.notice').html("appointment done");
 }
 
+$(".status").html("Done")
 updateFlash() ;
 updateStatus();
