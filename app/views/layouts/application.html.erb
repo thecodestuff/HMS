@@ -25,11 +25,6 @@
     <%end%>
         <div class="container">
         <%= yield %>
-        <div class="row">
-          <div class="col-sm-12">
-            <a href="<%= request.referrer %>" class="btn btn-warning"><i class="fa fa-chevron-circle-left fa-lg"></i> Back</a>
-          </div>
-        </div>
         <!-- Sticky Footer -->
         <%= render 'shared/footer' if current_user.present? %>
         </div>

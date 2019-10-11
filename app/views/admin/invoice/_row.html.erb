@@ -1,11 +1,9 @@
 <tr>
   <td><%= invoice.id %></td>
-  <td><%= invoice.patient_id %></td>
-  <td><%= invoice.transactionId %></td>
+  <td><%= invoice.firstname %></td>
   <td><%= invoice.status %></td>
   <td><%= invoice.amount %><b> &#8377;</b></td>
   <td>
-    <a href="<%= admin_invoice_status_path(invoice) %>" class="btn btn-warning">Done</a>
     <a href="<%= admin_invoice_path invoice %>" class="btn btn-primary">Reciept</a>
     <a href="<%= admin_invoice_path(invoice, :format => :pdf) %>" class="btn btn-success" target="blank">Download</a>
   </td>

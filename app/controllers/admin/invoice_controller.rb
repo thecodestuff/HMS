@@ -10,7 +10,7 @@ module Admin
     before_action :find_invoice, only: %i[update_status show]
 
     def index
-      @invoices = Invoice.page(params[:page]).per(5)
+      @invoices = Invoice.patient_name.page(params[:page]).per(5)
     end
 
     def create

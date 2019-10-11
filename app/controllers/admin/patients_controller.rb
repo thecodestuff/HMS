@@ -11,8 +11,6 @@ module Admin
     end
 
     def create
-      #@patient = Patient.new(patient_params)
-      #@patient.save
       @patient = Patient.find_or_create_patient(patient_params)
       @patient.update(patient_params)
       message = @patient.errors.any? ? @patient.errors[:base][0] : 'Patient admitted'
@@ -56,7 +54,6 @@ module Admin
     #   end
     # end
 
-
     private
 
     def patient_params
@@ -66,7 +63,7 @@ module Admin
         :patient_type,
         :ward_assigned,
         :admit_date,
-        :discharge_on,
+        :dischagre_on,
         :status,
         :ward_occupancy_detail_id
       )
