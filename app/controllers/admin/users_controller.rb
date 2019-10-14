@@ -6,6 +6,7 @@ module Admin
     before_action :authenticate_user!
     before_action :find_user, only: %i[update edit]
     before_action :paginate_user, only: %i[index]
+
     def index
       @users = User.with_attached_avatar
     end
@@ -20,6 +21,7 @@ module Admin
 
     def create
       @user = User.new(user_params)
+
       respond_to do |format|
         if @user.save
           update_physician_table(@user)
@@ -33,6 +35,7 @@ module Admin
     end
 
     def update
+      #binding.pry
       if @user.update(user_params)
         flash[:notice] = 'user updated successfully...'
       else
@@ -54,7 +57,8 @@ module Admin
         :firstname, :lastname, :civil_id, :email, :password,
         :previlige_level, :admin, :department, :phone, :blood_group,
         :age, :house_no, :street, :locality, :city, :provider,
-        :state, :country, :pincode, :role, :avatar, :uid
+        :state, :country, :pincode, :role, :avatar, :uid, :token,
+        :expires_at, :expires, :refresh_token
       )
     end
 

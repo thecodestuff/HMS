@@ -18,6 +18,7 @@ FactoryBot.define do
     state       { Faker::Address.state }
     pincode     { Faker::Address.zip_code }
     country     { Faker::Address.country }
-    role        { 'Patient' }
+    admin       { true }
+    role        { 'Admin' }
   end
 end

@@ -1,6 +1,6 @@
 <div class="form-wrapper" style="width:400px;margin:0px auto">
   <h2>Edit User </h2>
-  <%= form_for @user , url:{ action: 'update' } do |f|%>
+  <%= form_for @user , url: { action: 'update' } do |f|%>
     <%= render 'form',f: f %>
     <div class="form-group">
       <%= f.submit "Edit", class:"form-control btn btn-primary" %>    
