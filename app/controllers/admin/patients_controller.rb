@@ -22,10 +22,7 @@ module Admin
 
     def patients
       @patient = Patient.new
-      @patients = Patient.joins('INNER JOIN ward_occupancy_details w ON patients.ward_occupancy_detail_id = w.id')
-                         .joins('INNER JOIN users u ON u.id = patients.user_id')
-                         .select('patients.*,u.firstname, w.ward_name')
-                         .page(params[:page]).per(5)
+      @patients = Patient.list.page(params[:page]).per(5)
     end
 
     def update

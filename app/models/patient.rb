@@ -8,6 +8,7 @@ class Patient < ApplicationRecord
   #validate :status_cannot_be_dischared_on_creating
 
   before_create :dump_admit_date
+  before_update :dump_admit_date
   after_create :update_ward_status
   after_update :update_ward_status
 
@@ -20,6 +21,12 @@ class Patient < ApplicationRecord
   validates_uniqueness_of :user_id
 
   scope :not_admit, -> { includes(:user).map { |patient| [patient.user.firstname, patient.user.id]} }
+  scope :list, -> {
+    joins('INNER JOIN ward_occupancy_details w ON patients.ward_occupancy_detail_id = w.id')
+      .joins('INNER JOIN users u ON u.id = patients.user_id')
+      .select('patients.*,u.firstname, w.ward_name')
+      .order(admit_date: :desc)
+  }
 
   def dump_admit_date
     self.admit_date = Date.current unless admit_date.present?
