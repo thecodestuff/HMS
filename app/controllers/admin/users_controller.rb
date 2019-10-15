@@ -35,13 +35,12 @@ module Admin
     end
 
     def update
-      #binding.pry
       if @user.update(user_params)
         flash[:notice] = 'user updated successfully...'
+        redirect_to admin_users_path, status: 302
       else
-        flash[:alert] = @user.errors.details.to_s
+        render :new, form_errors: @form_errors = @user
       end
-      redirect_to admin_users_path
     end
 
     def destroy
