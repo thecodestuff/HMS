@@ -7,7 +7,7 @@ require 'factories/ward_occupancy_detail'
 RSpec.describe Patient, type: :model do
   let(:user) { create(:user) }
   let(:ward_occupancy_detail) { create(:ward_occupancy_detail) }
-  let(:patient) { create(:patient, user_id: user.id, ward_occupancy_detail_id:ward_occupancy_detail.id) }
+  let(:patient) { create(:patient, user_id: user.id, ward_occupancy_detail_id: ward_occupancy_detail.id) }
 
   context 'patient model validations' do
     it { is_expected.to validate_uniqueness_of(:user_id) }

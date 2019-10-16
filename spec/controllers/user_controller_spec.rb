@@ -88,7 +88,7 @@ RSpec.describe Admin::UsersController, type: :controller do
     let!(:user) { FactoryBot.create(:valid_user) }
 
     it 'should delete user' do
-      expect{
+      expect {
         delete :destroy, params: { id: user.id }
       }.to change(User, :count).by(-1)
       expect(flash[:notice]).to eql('user deleted successfully')
